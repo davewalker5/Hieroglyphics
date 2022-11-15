@@ -31,7 +31,7 @@ def transliterate_word():
     if request.method == "POST":
         try:
             word = request.form["word"]
-            transliteration_table = get_transliterations("alphabet")
+            transliteration_table = get_transliterations("alphabet_l_to_r")
             transliterated, transliteration = transliterate(transliteration_table, word)
             return _render_page(word, transliterated, transliteration, None)
         except BaseException as e:

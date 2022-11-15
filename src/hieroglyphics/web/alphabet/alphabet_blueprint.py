@@ -11,7 +11,7 @@ def alphabet():
 
     :return: The rendered page template
     """
-    transliteration_table = get_transliterations("alphabet")
+    transliteration_table = get_transliterations("alphabet_l_to_r")
     letters, transliteration = get_alphabet(transliteration_table)
     return render_template("alphabet/alphabet.html",
                            letters=letters,
