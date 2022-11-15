@@ -3,13 +3,13 @@
 {% block content %}
     {% include "error.html" with context %}
     <div class="transliteration">
-        <table border="0" cellpadding="5">
+        <table border="0">
             {% for i in range(letters | length) %}
                 {% if (i % 6) == 0 %}
                     <tr>
                         {% for j in range(6) %}
-                            <td align="center">{{ letters[i + j] }}</td>
-                            <td align="center">{{ transliteration[i + j] }}</td>
+                            <td class="letter-cell">{{ letters[i + j] }}</td>
+                            <td class="hieroglyph-cell">{{ transliteration[i + j] }}</td>
                         {% endfor %}
                     </tr>
                 {% endif %}

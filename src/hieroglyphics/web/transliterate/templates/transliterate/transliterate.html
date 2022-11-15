@@ -12,15 +12,15 @@
         </div>
         {% if transliteration %}
             <div class="transliteration">
-                <table border="0" cellpadding="5">
+                <table border="0">
                     <tr>
                         {% for l in letters %}
-                            <td align="center">{{ l }}</td>
+                            <td class="letter-cell">{{ l }}</td>
                         {% endfor %}
                     </tr>
                     <tr>
                         {% for h in transliteration %}
-                            <td align="center">{{ h }}</td>
+                            <td class="hieroglyph-cell">{{ h }}</td>
                         {% endfor %}
                     </tr>
                 </table>
