@@ -30,6 +30,16 @@ button > a {
   font-size: 48px;
 }
 
+.letter-cell {
+    text-align: center;
+    padding: 5px;
+}
+
+.hieroglyph-cell {
+    text-align: center;
+    padding: 5px;
+}
+
 /* --- Forms & button bar --------------------------------------------------- */
 .form-group {
     margin-bottom: 10px;
