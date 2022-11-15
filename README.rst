@@ -64,6 +64,7 @@ To run the web-based application in the Flask development web server, enter the 
 copy of the project:
 
 ::
+
     export PYTHONPATH=`pwd`/src
     export FLASK_DEBUG=1
     python -m hieroglyphics
