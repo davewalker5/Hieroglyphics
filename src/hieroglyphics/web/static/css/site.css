@@ -1,0 +1,159 @@
+/* --- Body styling -----------------------------–––------------------------- */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+}
+
+#main-content {
+    padding: 25px;
+}
+
+body h1 {
+  font-size: 1.25em;
+  margin-bottom: 15px;
+}
+
+body h2 {
+  font-size: 1.15em;
+}
+
+button > a {
+    text-decoration: none
+}
+
+/* --- Output --------------------------------------------------------------- */
+.transliteration {
+  border-top: 1px solid #D3D3D3;
+  margin-top: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 48px;
+}
+
+/* --- Forms & button bar --------------------------------------------------- */
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.button-bar {
+  border-top: 1px solid #D3D3D3;
+  margin-top: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.button-bar .btn-primary a:link {
+    color: white;
+}
+
+.button-bar .btn-primary a:visited {
+    color: white;
+}
+
+.button-bar .btn-primary a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.button-bar .btn-primary a:active {
+    color: white;
+}
+
+.button-bar .btn-light a:link {
+    color: black;
+}
+
+.button-bar .btn-light a:visited {
+    color: black;
+}
+
+.button-bar .btn-light a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.button-bar .btn-light a:active {
+    color: black;
+}
+
+/* --- Striped tables -----------------------------------–––----------------- */
+table.striped {
+    border: 1px solid grey;
+}
+
+table.striped tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table.striped th {
+    padding: 5px;
+}
+
+table.striped td {
+    padding: 5px;
+}
+
+div table.striped {
+    margin-bottom: 20px;
+}
+
+.td-nowrap {
+    white-space: nowrap;
+}
+
+.div-align-center {
+    display: flex;
+    justify-content: center;
+}
+
+/* --- Messages -------------------------------------–––--------------------- */
+
+div.error {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 2px solid red;
+    background: pink;
+    color: red;
+}
+
+div.message {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 2px solid #007316;
+    background: #6bdb81;
+    color: #007316;
+}
+
+/* --- Reporting and filtering sightings ----------------------------------- */
+
+.filter-criteria {
+    padding: 20px;
+    border: 1px solid #D3D3D3;
+    margin-bottom: 25px;
+}
+
+/* --- Data Entry ---------------------------------------------------------- */
+
+.form-group.required .control-label:after {
+  content: "  *";
+  color: red;
+}
+
+.geocode {
+    color: #286090;
+    cursor: pointer;
+}
+
+/* --- Icons --------------------------------------------------------------- */
+
+.icon-blue {
+    color: #0c6efd;
+}
+
+.icon-grey {
+    color: grey;
+}

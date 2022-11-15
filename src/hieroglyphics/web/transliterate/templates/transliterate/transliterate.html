@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% set title = "English to Hieroglyphic Transliteration" %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    {% include "error.html" with context %}
+    <form method="post">
+        <div class="form-group">
+            <label>Enter a word or phrase in English</label>
+            <input class="form-control" name="word" placeholder="Word to transliterate" value="{{ word }}"
+                   required>
+        </div>
+        {% if transliteration %}
+            <div class="transliteration">
+                <table border="0" cellpadding="5">
+                    <tr>
+                        {% for l in letters %}
+                            <td align="center">{{ l }}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for h in transliteration %}
+                            <td align="center">{{ h }}</td>
+                        {% endfor %}
+                    </tr>
+                </table>
+            </div>
+        {% endif %}
+        <div class="button-bar">
+            <button type="submit" value="create" class="btn btn-primary">Transliterate</button>
+        </div>
+    </form>
+{% endblock %}

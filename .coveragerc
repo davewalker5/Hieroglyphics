@@ -1,0 +1,6 @@
+[run]
+omit =
+    tests/*
+    src/hieroglyphics/__main__.py
+    src/hieroglyphics/web/*
+    src/hieroglyphics/web/**/*
