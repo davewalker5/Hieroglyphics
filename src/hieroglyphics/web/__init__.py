@@ -1,8 +1,9 @@
-import os
+from os.path import dirname, join
 from flask import Flask
 from .home import home_bp
 from .transliterate import transliterate_bp
 from .alphabet import alphabet_bp
+from .logging_wrapper import configure_logger, get_logger
 
 
 def create_app():
@@ -12,8 +13,8 @@ def create_app():
     :return: An instance of the Flask application
     """
     app = Flask("Hieroglyphics",
-                static_folder=os.path.join(os.path.dirname(__file__), "static"),
-                template_folder=os.path.join(os.path.dirname(__file__), "templates"))
+                static_folder=join(dirname(__file__), "static"),
+                template_folder=join(dirname(__file__), "templates"))
 
     app.config.update(
         SESSION_COOKIE_SAMESITE="Strict",
@@ -25,6 +26,13 @@ def create_app():
     app.register_blueprint(home_bp, url_prefix="")
     app.register_blueprint(transliterate_bp, url_prefix="/transliterate")
     app.register_blueprint(alphabet_bp, url_prefix="/alphabet")
+
+    # Configure the logger that's used across Werkzeug, Flask and the application-specific
+    # logging
+    project_folder = dirname(dirname(dirname(dirname(__file__))))
+    log_file_path = join(project_folder, "logs", "hieroglyphics.log")
+    configure_logger(log_file_path, 100000)
+    app.logger = get_logger()
 
     @app.after_request
     def add_security_headers(response):

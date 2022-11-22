@@ -35,9 +35,18 @@ button > a {
     padding: 5px;
 }
 
-.hieroglyph-cell {
+.hieroglyph-cell-l-to-r {
     text-align: center;
     padding: 5px;
+}
+
+.hieroglyph-cell-r-to-l {
+    text-align: center;
+    padding: 5px;
+    -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
+    -moz-transform: matrix(-1, 0, 0, 1, 0, 0);
+    -o-transform: matrix(-1, 0, 0, 1, 0, 0);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
 }
 
 /* --- Forms & button bar --------------------------------------------------- */
