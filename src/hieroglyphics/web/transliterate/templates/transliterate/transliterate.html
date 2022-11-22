@@ -1,14 +1,26 @@
 {% extends "layout.html" %}
 {% set title = "English to Hieroglyphic Transliteration" %}
 {% block title %}{{ title }}{% endblock %}
+{% if direction == 0 %}
+    {% set glyph_cell_style = "hieroglyph-cell-l-to-r" %}
+{% else %}
+    {% set glyph_cell_style = "hieroglyph-cell-r-to-l" %}
+{% endif %}
 
 {% block content %}
     {% include "error.html" with context %}
     <form method="post">
         <div class="form-group">
-            <label>Enter a word or phrase in English</label>
-            <input class="form-control" name="word" placeholder="Word to transliterate" value="{{ word }}"
-                   required>
+            <label>English Word or Phrase</label>
+            <input class="form-control" name="word" id="word" placeholder="Word to transliterate"
+                   value="{{ word }}" required>
+        </div>
+        <div class="form-group">
+            <label>Text Direction</label>
+            <select name="direction" id="direction">
+                <option value="0" {% if direction == 0 %}selected{% endif %}>Left to right</option>
+                <option value="1" {% if direction == 1 %}selected{% endif %}>Right to left</option>
+            </select>
         </div>
         {% if transliteration %}
             <div class="transliteration">
@@ -20,7 +32,7 @@
                     </tr>
                     <tr>
                         {% for h in transliteration %}
-                            <td class="hieroglyph-cell">{{ h }}</td>
+                            <td class="{{ glyph_cell_style }}">{{ h }}</td>
                         {% endfor %}
                     </tr>
                 </table>

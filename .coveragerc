@@ -2,5 +2,10 @@
 omit =
     tests/*
     src/hieroglyphics/__main__.py
-    src/hieroglyphics/web/*
-    src/hieroglyphics/web/**/*
+    src/hieroglyphics/__init__.py
+    src/hieroglyphics/web/__init__.py
+    src/hieroglyphics/web/alphabet/*
+    src/hieroglyphics/web/home/*
+    src/hieroglyphics/web/logging_wrapper/*
+    src/hieroglyphics/web/transliterate/__init__.py
+    src/hieroglyphics/web/transliterate/transliterate_blueprint.py
