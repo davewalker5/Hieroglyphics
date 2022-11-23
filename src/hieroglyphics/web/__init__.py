@@ -29,9 +29,7 @@ def create_app():
 
     # Configure the logger that's used across Werkzeug, Flask and the application-specific
     # logging
-    project_folder = dirname(dirname(dirname(dirname(__file__))))
-    log_file_path = join(project_folder, "logs", "hieroglyphics.log")
-    configure_logger(log_file_path, 100000)
+    configure_logger("hieroglyphics.log", 100000)
     app.logger = get_logger()
 
     @app.after_request
