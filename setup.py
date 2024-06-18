@@ -31,7 +31,7 @@ web_package_data.append("templates/*.html")
 
 setuptools.setup(
     name="hieroglyphics",
-    version="1.2.0",
+    version="1.3.0",
     description="English to Hieroglyphics Transliterator",
     packages=setuptools.find_packages("src"),
     include_package_data=True,
