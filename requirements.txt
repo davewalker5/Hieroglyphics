@@ -35,5 +35,5 @@ sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.5
 tomli==2.0.1
 urllib3==2.2.2
-Werkzeug==3.0.3
+Werkzeug
 WTForms==3.0.1
