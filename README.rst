@@ -6,10 +6,6 @@
     :target: https://codecov.io/gh/davewalker5/Hieroglyphics
     :alt: Coverage
 
-.. image:: https://sonarcloud.io/api/project_badges/measure?project=davewalker5_Hieroglyphics&metric=alert_status
-    :target: https://sonarcloud.io/summary/new_code?id=davewalker5_Hieroglyphics
-    :alt: Quality Gate
-
 .. image:: https://img.shields.io/github/issues/davewalker5/Hieroglyphics
     :target: https://github.com/davewalker5/Hieroglyphics/issues
     :alt: GitHub issues
