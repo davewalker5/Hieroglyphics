@@ -1,6 +1,6 @@
-#!/bin/sh -f
+#!/usr/bin/env bash
 
-export PROJECT_ROOT=$( cd "$( dirname "$0" )" && pwd )
+export PROJECT_ROOT=$( cd "$( dirname "$0" )/.." && pwd )
 . $PROJECT_ROOT/venv/bin/activate
 export PYTHONPATH=$PROJECT_ROOT/src
 export FLASK_ENV=development
