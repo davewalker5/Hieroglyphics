@@ -20,7 +20,7 @@ packaging==26.0
 pluggy==1.6.0
 Pygments==2.20.0
 pyparsing==3.3.2
-pytest==9.0.2
+pytest==9.0.3
 pytest-cov==7.0.0
 python-dotenv==1.2.2
 pytz==2026.1.post1
