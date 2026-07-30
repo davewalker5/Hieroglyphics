@@ -57,7 +57,7 @@ The hieroglyphics image was been built with the following:
 | Python | 3.10.0 |
 | Docker Desktop | 20.10.11 |
 
-Other dependencies and their versions are listed in the project's [requirements.txt](https://github.com/davewalker5/Hieroglyphics/blob/main/requirements.txt) file
+Project dependencies are declared in [pyproject.toml](https://github.com/davewalker5/Hieroglyphics/blob/main/pyproject.toml).
 
 ## Find Us
 
