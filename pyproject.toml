@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hieroglyphics"
-version = "1.13.0"
+version = "1.14.0"
 description = "English to Hieroglyphics Transliterator"
 readme = "README.rst"
 requires-python = ">=3.10"
