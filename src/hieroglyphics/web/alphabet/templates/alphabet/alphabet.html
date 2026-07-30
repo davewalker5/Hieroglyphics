@@ -1,19 +1,34 @@
 {% extends "layout.html" %}
+{% block title %}Hieroglyphic Alphabet{% endblock %}
 
 {% block content %}
+    <section class="page-heading">
+        <div>
+            <p class="eyebrow">Reference library</p>
+            <h1>Hieroglyphic alphabet</h1>
+            <p class="lede">Explore the phonetic glyph used for each letter of the English alphabet.</p>
+        </div>
+        <div class="context-badge" aria-hidden="true">
+            <span>26</span>
+            <small>Letter forms</small>
+        </div>
+    </section>
+
     {% include "error.html" with context %}
-    <div class="transliteration">
-        <table border="0">
+    <section class="alphabet-panel">
+        <div class="panel-heading">
+            <div>
+                <h2>Phonetic reference</h2>
+                <p>Select a letter visually, then use it as a guide for your transliteration.</p>
+            </div>
+        </div>
+        <div class="alphabet-grid">
             {% for i in range(letters | length) %}
-                {% if (i % 6) == 0 %}
-                    <tr>
-                        {% for j in range(6) %}
-                            <td class="letter-cell">{{ letters[i + j] }}</td>
-                            <td class="hieroglyph-cell">{{ transliteration[i + j] }}</td>
-                        {% endfor %}
-                    </tr>
-                {% endif %}
+                <article class="alphabet-card">
+                    <span class="alphabet-letter">{{ letters[i] }}</span>
+                    <span class="alphabet-glyph">{{ transliteration[i] }}</span>
+                </article>
             {% endfor %}
-        </table>
-    </div>
+        </div>
+    </section>
 {% endblock %}

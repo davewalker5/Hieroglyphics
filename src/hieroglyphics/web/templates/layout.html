@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+    <meta name="theme-color" content="#07111f">
+    <title>{% block title %}Hieroglyphics{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     {% if not suppress_menu %}
         {% include "menu.html" with context %}
     {% endif %}
-    <div id="main-content" class="container-fluid">
+    <main id="main-content">
         {% block content %}
         {% endblock %}
-    </div>
+    </main>
     <script src="{{ url_for('static', filename='script/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     {% block scripts %}
