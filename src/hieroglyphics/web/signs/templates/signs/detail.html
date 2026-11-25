@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block title %}{{ sign.gardiner or sign.code_point }} · Sign catalogue{% endblock %}
+
+{% block content %}
+    {% set properties = sign.properties %}
+    <p><a href="{{ url_for('signs.index') }}">← Sign catalogue</a></p>
+    <section class="page-heading">
+        <div>
+            <h1>{{ sign.gardiner or sign.code_point }}</h1>
+            <p class="lede">{{ sign.description or "Description unavailable" }}</p>
+        </div>
+    </section>
+
+    <section class="sign-detail workspace-panel" aria-label="Sign information">
+        <div class="catalogue-glyph sign-detail-glyph" aria-hidden="true">{{ sign.glyph }}</div>
+        <dl>
+            <dt>Unicode</dt><dd>{{ sign.code_point }}</dd>
+            {% if sign.gardiner %}<dt>Gardiner identifier</dt><dd>{{ sign.gardiner }}</dd>{% endif %}
+            <dt>Classification</dt>
+            <dd>
+                {% if sign.group %}
+                    <a href="{{ url_for('signs.index', group=sign.group) }}">{{ classification }}</a>
+                    · {{ properties['kEH_Cat'] }}
+                {% else %}Undocumented{% endif %}
+            </dd>
+            <dt>Egyptological transliteration</dt><dd>{{ properties.get('kEH_FVal', 'Undocumented') }}</dd>
+            <dt>Linguistic function</dt><dd>{{ properties.get('kEH_Func', 'Undocumented') }}</dd>
+            {% if sign.consonant_count %}
+                <dt>Consonants represented</dt>
+                <dd>{{ sign.consonant_count }} · {{ {1: 'uniliteral', 2: 'biliteral', 3: 'triliteral'}[sign.consonant_count] }}</dd>
+            {% endif %}
+            <dt>Mirroring and rotation</dt>
+            <dd>
+                {{ "Mirroring restricted" if properties.get('kEH_NoMirror') == 'Y' else "Mirroring allowed" }} ·
+                {{ "Rotation restricted" if properties.get('kEH_NoRotate') == 'Y' else "Rotation allowed" }}
+                under Unicode’s sign properties.
+            </dd>
+            {% if properties.get('kEH_AltSeq') %}
+                <dt>Alternate encoding</dt><dd>{{ properties['kEH_AltSeq'] }}</dd>
+            {% endif %}
+            <dt>Catalogue references</dt>
+            <dd>
+                {% for key, label in [('kEH_UniK', 'UniKemet'), ('kEH_JSesh', 'JSesh'),
+                                     ('kEH_HG', 'Hieroglyphica'), ('kEH_IFAO', 'IFAO')] %}
+                    {% if properties.get(key) %}<div>{{ label }} {{ properties[key] }}</div>{% endif %}
+                {% endfor %}
+            </dd>
+            <dt>Letters that use this sign in the app</dt>
+            <dd>
+                {% for letter, count in letters %}
+                    {{ letter }}{% if count > 1 %} ({{ count }} times){% endif %}{% if not loop.last %}, {% endif %}
+                {% else %}None in the active correspondence table.{% endfor %}
+            </dd>
+        </dl>
+    </section>
+
+    <p class="sign-source">
+        Linguistic functions and values are provisional. This record describes a sign across uses.
+        A reading in a particular inscription depends on context.
+        <a href="https://www.unicode.org/Public/{{ version }}/ucd/Unikemet.txt">UniKemet {{ version }}</a> ·
+        <a href="https://www.unicode.org/reports/tr57/">Property definitions</a> ·
+        <a href="{{ url_for('signs.licence') }}">Unicode data licence</a>
+    </p>
+{% endblock %}

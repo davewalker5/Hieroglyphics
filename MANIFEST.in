@@ -5,3 +5,5 @@ recursive-include src/hieroglyphics/web/static *
 recursive-include src/hieroglyphics/web/templates *.html
 recursive-include src/hieroglyphics/web/alphabet/templates *.html
 recursive-include src/hieroglyphics/web/transliterate/templates *.html
+recursive-include src/hieroglyphics/catalogue/data *.json *.txt
+recursive-include src/hieroglyphics/web/signs/templates *.html

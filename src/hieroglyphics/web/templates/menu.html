@@ -24,6 +24,11 @@
              {% if request.endpoint == 'alphabet.alphabet' %}aria-current="page"{% endif %}
              href="{{ url_for('alphabet.alphabet') }}">Alphabet</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.blueprint == 'signs' %} active{% endif %}"
+             {% if request.blueprint == 'signs' %}aria-current="page"{% endif %}
+             href="{{ url_for('signs.index') }}">Sign catalogue</a>
+        </li>
       </ul>
     </div>
     </div>

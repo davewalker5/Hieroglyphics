@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hieroglyphics"
-version = "1.14.0"
+version = "1.15.0"
 description = "English to Hieroglyphics Transliterator"
 readme = "README.rst"
 requires-python = ">=3.10"
@@ -52,6 +52,7 @@ include-package-data = true
 where = ["src"]
 
 [tool.setuptools.package-data]
+"hieroglyphics.catalogue" = ["data/*.json", "data/*.txt"]
 "hieroglyphics.transliteration" = ["data/*.csv"]
 "hieroglyphics.web" = [
     "static/**/*",
@@ -59,6 +60,8 @@ where = ["src"]
 ]
 "hieroglyphics.web.alphabet" = ["templates/alphabet/*.html"]
 "hieroglyphics.web.transliterate" = ["templates/transliterate/*.html"]
+
+"hieroglyphics.web.signs" = ["templates/signs/*.html"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

@@ -3,6 +3,7 @@ from flask import Flask
 from .home import home_bp
 from .transliterate import transliterate_bp
 from .alphabet import alphabet_bp
+from .signs.signs_blueprint import signs_bp
 from .logging_wrapper import configure_logger, get_logger
 
 
@@ -26,6 +27,7 @@ def create_app():
     app.register_blueprint(home_bp, url_prefix="")
     app.register_blueprint(transliterate_bp, url_prefix="/transliterate")
     app.register_blueprint(alphabet_bp, url_prefix="/alphabet")
+    app.register_blueprint(signs_bp, url_prefix="/signs")
 
     # Configure the logger that's used across Werkzeug, Flask and the application-specific
     # logging

@@ -6,3 +6,4 @@ The hieroglyphics.transliterator Package
    :caption: Contents:
 
    transliterator
+   unikemet

@@ -9,5 +9,6 @@ The hieroglyphics.web Package
    transliterate_blueprint
    text_direction
    alphabet_blueprint
+   signs_blueprint
    logger
    logging_request_handler
