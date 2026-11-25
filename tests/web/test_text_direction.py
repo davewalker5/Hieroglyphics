@@ -38,5 +38,5 @@ def test_transliteration_direction(
     assert response.status_code == 200
     html = response.get_data(as_text=True)
     assert re.findall(r'<td class="letter-cell">([^<]+)</td>', html) == letters
-    glyphs = re.findall(rf'<td class="hieroglyph-cell-{direction_class}">([^<]+)</td>', html)
-    assert [tuple(map(ord, glyph)) for glyph in glyphs] == code_points
+    glyphs = re.findall(rf'<td class="hieroglyph-cell-{direction_class}">(.*?)</td>', html, re.S)
+    assert [tuple(map(ord, re.sub(r"<[^>]+>", "", glyph))) for glyph in glyphs] == code_points

@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block title %}Sign catalogue{% endblock %}
+
+{% block content %}
+    <section class="page-heading">
+        <div>
+            <h1>Sign catalogue</h1>
+            <p class="lede">Explore the Egyptian signs used by the transliterator.</p>
+        </div>
+    </section>
+
+    <form method="get" action="{{ url_for('signs.index') }}" class="catalogue-filters workspace-panel">
+        <label for="sign-query">Search signs
+            <input class="form-control" id="sign-query" name="q" value="{{ query }}"
+                   placeholder="e.g. G17, owl or rw">
+        </label>
+        <label for="sign-group">Classification
+            <select class="form-select" id="sign-group" name="group">
+                <option value="">All groups</option>
+                {% for code, label in groups.items() %}
+                    <option value="{{ code }}"{% if group == code %} selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label for="sign-function">Function
+            <select class="form-select" id="sign-function" name="function">
+                <option value="">All functions</option>
+                {% for label in functions %}
+                    <option value="{{ label }}"{% if function == label %} selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label for="sign-consonants">Consonant count
+            <select class="form-select" id="sign-consonants" name="consonants">
+                <option value="">Any count</option>
+                {% for count, label in [('1', 'Uniliteral'), ('2', 'Biliteral'), ('3', 'Triliteral')] %}
+                    <option value="{{ count }}"{% if consonants == count %} selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <button class="primary-button" type="submit">Apply</button>
+        {% if query or group or function or consonants %}
+            <a href="{{ url_for('signs.index') }}">Clear filters</a>
+        {% endif %}
+    </form>
+
+    {% if signs %}
+        <ul class="sign-grid">
+            {% for sign in signs %}
+                <li>
+                    <a class="sign-card" href="{{ url_for('signs.detail', code_point=sign.code_point) }}">
+                        <span class="catalogue-glyph" aria-hidden="true">{{ sign.glyph }}</span>
+                        <strong>{{ sign.gardiner or sign.code_point }}</strong>
+                        <span>{{ sign.description or "Description unavailable" }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No signs match your search and filters.</p>
+    {% endif %}
+
+    <p class="sign-source">
+        <a href="https://www.unicode.org/Public/{{ version }}/ucd/Unikemet.txt">UniKemet {{ version }}</a>
+        · <a href="{{ url_for('signs.licence') }}">Unicode data licence</a>
+    </p>
+{% endblock %}

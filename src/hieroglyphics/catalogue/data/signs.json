@@ -1,0 +1,237 @@
+{
+  "unicode_version": "18.0.0",
+  "source_url": "https://www.unicode.org/Public/18.0.0/ucd/Unikemet.txt",
+  "retrieved_on": "2026-11-25",
+  "sha256": "a6c03de18f40f54df5bf3ea6c3152f23075ba8647520e98ea80e8e0352d65a33",
+  "license_file": "Unikemet-LICENSE.txt",
+  "signs": {
+    "1308B": {
+      "kEH_Cat": "D-12-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "A mouth.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "r",
+      "kEH_UniK": "D021",
+      "kEH_JSesh": "D21",
+      "kEH_HG": "D21",
+      "kEH_IFAO": "100,11"
+    },
+    "130A7": {
+      "kEH_Cat": "D-28-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "A human hand.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "d",
+      "kEH_UniK": "D046",
+      "kEH_JSesh": "D46",
+      "kEH_HG": "D46",
+      "kEH_IFAO": "114,10"
+    },
+    "130C0": {
+      "kEH_Cat": "D-35-012",
+      "kEH_Core": "C",
+      "kEH_Desc": "A human foot and lower leg.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "b",
+      "kEH_UniK": "D058",
+      "kEH_JSesh": "D58",
+      "kEH_HG": "D58",
+      "kEH_IFAO": "119,12"
+    },
+    "130ED": {
+      "kEH_Cat": "E-17-011",
+      "kEH_Core": "C",
+      "kEH_Desc": "A lion, lying down, tail curled over the body towards the back.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "rw",
+      "kEH_UniK": "E023",
+      "kEH_JSesh": "E23",
+      "kEH_HG": "E23",
+      "kEH_IFAO": "136,12"
+    },
+    "1313F": {
+      "kEH_Cat": "G-26-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "An Egyptian vulture (Neophron percnopterus).",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "ꜣ",
+      "kEH_UniK": "G001",
+      "kEH_JSesh": "G1",
+      "kEH_HG": "G1",
+      "kEH_IFAO": "204,1"
+    },
+    "13153": {
+      "kEH_Cat": "G-09-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "An owl.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "m",
+      "kEH_UniK": "G017",
+      "kEH_JSesh": "G17",
+      "kEH_HG": "G17",
+      "kEH_IFAO": "176,10"
+    },
+    "13171": {
+      "kEH_Cat": "G-03-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "A quail chick (Coturnix coturnix).",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "w",
+      "kEH_UniK": "G043",
+      "kEH_JSesh": "G43",
+      "kEH_HG": "G43",
+      "kEH_IFAO": "171,9"
+    },
+    "13191": {
+      "kEH_Cat": "I-07-002",
+      "kEH_Core": "C",
+      "kEH_Desc": "A horned desert viper (Cerastes cerastes).",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "f",
+      "kEH_UniK": "I009",
+      "kEH_JSesh": "I9",
+      "kEH_HG": "I9",
+      "kEH_IFAO": "214,12"
+    },
+    "13193": {
+      "kEH_Cat": "I-09-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "A cobra in repose (Naja haje).",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "ḏ",
+      "kEH_UniK": "I010",
+      "kEH_JSesh": "I10",
+      "kEH_HG": "I10",
+      "kEH_IFAO": "215,10"
+    },
+    "131CB": {
+      "kEH_Cat": "M-14-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "A flowering reed.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "ꞽ",
+      "kEH_UniK": "M017",
+      "kEH_JSesh": "M17",
+      "kEH_HG": "M17",
+      "kEH_IFAO": "248,7"
+    },
+    "131CC": {
+      "kEH_Cat": "M-14-003",
+      "kEH_Core": "C",
+      "kEH_Desc": "Two flowering reeds, arranged horizontally.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "y",
+      "kEH_UniK": "M017A"
+    },
+    "1320E": {
+      "kEH_Cat": "N-17-001",
+      "kEH_Core": "C",
+      "kEH_Desc": " A sandy hill slope.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "ḳ",
+      "kEH_UniK": "N029",
+      "kEH_JSesh": "N29",
+      "kEH_HG": "N29",
+      "kEH_IFAO": "275,8"
+    },
+    "13216": {
+      "kEH_Cat": "N-19-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "A ripple of water.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "n",
+      "kEH_UniK": "N035",
+      "kEH_JSesh": "N35",
+      "kEH_HG": "N35",
+      "kEH_IFAO": "277,2"
+    },
+    "13254": {
+      "kEH_Cat": "O-02-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "A plan of a courtyard or reed shelter.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "h",
+      "kEH_UniK": "O004",
+      "kEH_JSesh": "O4",
+      "kEH_HG": "O4",
+      "kEH_IFAO": "283,2"
+    },
+    "13283": {
+      "kEH_Cat": "O-18-006",
+      "kEH_Core": "C",
+      "kEH_Desc": "A door bolt.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "s",
+      "kEH_UniK": "O034",
+      "kEH_JSesh": "O34",
+      "kEH_HG": "O34",
+      "kEH_IFAO": "317,10"
+    },
+    "132AA": {
+      "kEH_Cat": "Q-01-022",
+      "kEH_Core": "C",
+      "kEH_Desc": "A stool made of reed matting.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "p",
+      "kEH_UniK": "Q003",
+      "kEH_JSesh": "Q3",
+      "kEH_HG": "Q3",
+      "kEH_IFAO": "340,5"
+    },
+    "132F4": {
+      "kEH_Cat": "S-15-019",
+      "kEH_Core": "C",
+      "kEH_Desc": "A folded piece of cloth.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "s",
+      "kEH_UniK": "S029",
+      "kEH_JSesh": "S29",
+      "kEH_HG": "S29",
+      "kEH_IFAO": "380,6"
+    },
+    "1336F": {
+      "kEH_Cat": "V-01-029",
+      "kEH_Core": "C",
+      "kEH_Desc": "A lasso, with a big loop at the front, with a tie at the front and a small loop at the back, with an upward, downward curving line behind the loop.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "wꜣ",
+      "kEH_UniK": "V004",
+      "kEH_JSesh": "V4",
+      "kEH_HG": "V4",
+      "kEH_IFAO": "432,3"
+    },
+    "133A1": {
+      "kEH_Cat": "V-09-009",
+      "kEH_Core": "C",
+      "kEH_Desc": " A wickerwork basket with a handle, orientated with the handle to the back.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "k",
+      "kEH_UniK": "V031",
+      "kEH_JSesh": "V31",
+      "kEH_HG": "V31",
+      "kEH_IFAO": "442,3"
+    },
+    "133BC": {
+      "kEH_Cat": "W-05-005",
+      "kEH_Core": "C",
+      "kEH_Desc": "A ring-stand for jars.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "g",
+      "kEH_UniK": "W011",
+      "kEH_JSesh": "W11",
+      "kEH_HG": "W11",
+      "kEH_IFAO": "450,9"
+    },
+    "133CF": {
+      "kEH_Cat": "X-01-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "A half round loaf of bread.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "t",
+      "kEH_UniK": "X001",
+      "kEH_JSesh": "X1",
+      "kEH_HG": "X1",
+      "kEH_IFAO": "461,1"
+    }
+  }
+}

@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% from "sign_links.html" import link_signs %}
 {% set title = "English to Hieroglyphic Transliteration" %}
 {% block title %}{{ title }}{% endblock %}
 {% if direction == 0 %}
@@ -68,7 +69,7 @@
                         </tr>
                         <tr aria-label="Hieroglyphic transliteration">
                         {% for h in transliteration %}
-                            <td class="{{ glyph_cell_style }}">{{ h }}</td>
+                            <td class="{{ glyph_cell_style }}">{{ link_signs(h) }}</td>
                         {% endfor %}
                         </tr>
                 </table>

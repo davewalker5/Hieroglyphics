@@ -1,0 +1,11 @@
+{% macro link_signs(sequence) -%}
+    {% for glyph in sequence -%}
+        {% set sign = catalogue_sign(glyph) -%}
+        {% if sign -%}
+            <a class="sign-glyph-link" href="{{ url_for('signs.detail', code_point=sign.code_point) }}"
+               aria-label="Explore {{ sign.gardiner or sign.code_point }}">{{ glyph }}</a>
+        {%- else -%}
+            {{ glyph }}
+        {%- endif -%}
+    {%- endfor %}
+{%- endmacro %}

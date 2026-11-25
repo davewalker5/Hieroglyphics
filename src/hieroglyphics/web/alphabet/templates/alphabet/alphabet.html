@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% from "sign_links.html" import link_signs %}
 {% block title %}Hieroglyphic Alphabet{% endblock %}
 
 {% block content %}
@@ -6,7 +7,7 @@
         <div>
             <p class="eyebrow">Reference library</p>
             <h1>Hieroglyphic alphabet</h1>
-            <p class="lede">Explore the phonetic glyph used for each letter of the English alphabet.</p>
+            <p class="lede">Explore the signs the app uses for each letter of the English alphabet.</p>
         </div>
         <div class="context-badge" aria-hidden="true">
             <span>26</span>
@@ -18,15 +19,15 @@
     <section class="alphabet-panel">
         <div class="panel-heading">
             <div>
-                <h2>Phonetic reference</h2>
-                <p>Select a letter visually, then use it as a guide for your transliteration.</p>
+                <h2>App letter correspondences</h2>
+                <p>Select a glyph to open its catalogue entry.</p>
             </div>
         </div>
         <div class="alphabet-grid">
             {% for i in range(letters | length) %}
                 <article class="alphabet-card">
                     <span class="alphabet-letter">{{ letters[i] }}</span>
-                    <span class="alphabet-glyph">{{ transliteration[i] }}</span>
+                    <span class="alphabet-glyph">{{ link_signs(transliteration[i]) }}</span>
                 </article>
             {% endfor %}
         </div>

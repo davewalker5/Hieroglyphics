@@ -7,6 +7,7 @@ Hieroglyphics Transliteration
 
    transliteration/index
    web/index
+   catalogue/signs
 
 Indices and tables
 ==================

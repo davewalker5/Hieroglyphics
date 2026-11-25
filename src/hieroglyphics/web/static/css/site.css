@@ -370,3 +370,64 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
 }
+
+@font-face {
+    font-family: "Catalogue Hieroglyphs";
+    src: url("../fonts/NotoSansEgyptianHieroglyphs-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+.catalogue-glyph { font: 48px/1.25 "Catalogue Hieroglyphs", "Segoe UI Historic", sans-serif; }
+
+.sign-glyph-link { color: inherit; text-decoration: none; }
+.sign-glyph-link:hover, .sign-glyph-link:focus-visible { color: var(--cyan); text-decoration: underline; }
+
+.catalogue-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 12px;
+    padding: 18px;
+    margin-bottom: 22px;
+}
+.catalogue-filters label { flex: 1 1 10rem; }
+.catalogue-filters label:first-child { flex: 2 1 15rem; }
+.catalogue-filters label :is(input, select) { margin-top: 4px; }
+.catalogue-filters > a { align-self: center; }
+
+.sign-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.sign-card {
+    display: grid;
+    grid-template-rows: minmax(70px, auto) auto 1fr;
+    align-items: start;
+    gap: 6px;
+    height: 100%;
+    padding: 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    color: var(--text);
+    text-decoration: none;
+}
+.sign-card > :last-child, .sign-source { color: var(--muted); }
+.sign-card:hover, .sign-card:focus-visible { border-color: var(--cyan); color: var(--text); }
+.sign-detail {
+    display: grid;
+    grid-template-columns: minmax(130px, 1fr) 3fr;
+    padding: clamp(16px, 3vw, 30px);
+    gap: 20px;
+}
+.sign-detail-glyph { font-size: clamp(72px, 12vw, 132px); text-align: center; }
+.sign-detail dd { margin-bottom: 12px; overflow-wrap: anywhere; }
+.sign-source { margin-top: 22px; }
+
+@media (max-width: 560px) {
+    .sign-detail { grid-template-columns: 1fr; }
+}
