@@ -1,11 +1,10 @@
 (() => {
     const form = document.getElementById("transliteration-form");
     const word = form.elements.namedItem("word");
-    const direction = form.elements.namedItem("direction");
     const result = document.getElementById("transliteration-result");
     let activeRequest;
 
-    /** Refresh the result for the current text and reading direction. */
+    /** Refresh the result for the current text, direction and layout. */
     async function updateResult() {
         activeRequest?.abort();
         if (!word.value) {
@@ -38,7 +37,11 @@
     }
 
     word.addEventListener("input", updateResult);
-    direction.addEventListener("change", updateResult);
+    form.addEventListener("change", (event) => {
+        if (event.target.matches("select")) {
+            updateResult();
+        }
+    });
     form.addEventListener("submit", (event) => {
         event.preventDefault();
         updateResult();
