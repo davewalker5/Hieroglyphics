@@ -1,0 +1,20 @@
+# Logograms
+13005
+13006
+1300E
+13012
+13017
+13029
+
+# Determinatives
+13000
+13002
+13050
+130BB
+13197
+1329B
+
+# Signs with multiple documented roles
+131AC
+131CD
+133D4

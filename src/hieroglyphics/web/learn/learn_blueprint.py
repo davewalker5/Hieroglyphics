@@ -10,6 +10,7 @@ from itsdangerous import BadData, URLSafeSerializer
 
 from hieroglyphics.catalogue.signs import Sign, get_catalogue, group_label
 from hieroglyphics.learning.depiction import generate_depiction_question
+from hieroglyphics.learning.linguistic_function import generate_function_question
 from hieroglyphics.learning.phonetic import (
     generate_question,
     generate_sign_value_question,
@@ -60,6 +61,18 @@ def depicted_object() -> str:
     """
     return _run_quiz(
         "depicted_object", "learn-depicted-object", generate_depiction_question
+    )
+
+
+@learn_bp.route("/linguistic-function", methods=["GET", "POST"])
+def linguistic_function() -> str:
+    """
+    Present and grade questions about the roles signs play in writing.
+
+    :return: Rendered exercise page, including the score after the final answer.
+    """
+    return _run_quiz(
+        "linguistic_function", "learn-linguistic-function", generate_function_question
     )
 
 

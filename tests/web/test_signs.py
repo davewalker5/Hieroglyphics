@@ -53,12 +53,13 @@ def test_catalogue_detail_and_links(monkeypatch: pytest.MonkeyPatch) -> None:
     """Catalogue entries link from the alphabet and both result directions."""
     monkeypatch.delenv("HIEROGLYPHICS_DATA", raising=False)
     with create_app().test_client() as client:
-        assert len(get_catalogue()[1]) == 21
-        assert client.get("/signs/").get_data(as_text=True).count('class="sign-card"') == 21
+        assert len(get_catalogue()[1]) == 36
+        assert client.get("/signs/").get_data(as_text=True).count('class="sign-card"') == 36
         detail = client.get("/signs/U+132F4").get_data(as_text=True)
         assert "S29" in detail and "folded piece of cloth" in detail
         assert "X (2 times)" in detail and "UniKemet 18.0.0" in detail
-        assert client.get("/signs/U+13000").status_code == 404
+        assert client.get("/signs/U+13000").status_code == 200
+        assert client.get("/signs/U+13001").status_code == 404
         assert client.get("/signs/U+wrong").status_code == 404
         assert client.get("/signs/licence").status_code == 200
         assert client.get("/alphabet/").get_data(as_text=True).count('href="/signs/U+132F4"') == 4
@@ -71,7 +72,7 @@ def test_custom_sign_without_catalogue_entry(tmp_path: Path, monkeypatch: pytest
     """Keep custom glyphs visible even when they cannot link to a catalogue entry."""
     from hieroglyphics.transliteration import transliterator
 
-    (tmp_path / "alphabet_l_to_r.csv").write_text("Letter,Code 1,Code 2\nA,13000,132F4\n", encoding="utf-8")
+    (tmp_path / "alphabet_l_to_r.csv").write_text("Letter,Code 1,Code 2\nA,13001,132F4\n", encoding="utf-8")
     monkeypatch.setenv("HIEROGLYPHICS_DATA", str(tmp_path))
     monkeypatch.setattr(transliterator, "_transliteration_tables", {})
     with create_app().test_client() as client:
@@ -79,6 +80,6 @@ def test_custom_sign_without_catalogue_entry(tmp_path: Path, monkeypatch: pytest
         response = client.post("/transliterate/", data={"word": "A", "direction": 0})
 
     for html in (alphabet, response.get_data(as_text=True)):
-        assert chr(0x13000) in html
-        assert 'href="/signs/U+13000"' not in html
+        assert chr(0x13001) in html
+        assert 'href="/signs/U+13001"' not in html
         assert 'href="/signs/U+132F4"' in html

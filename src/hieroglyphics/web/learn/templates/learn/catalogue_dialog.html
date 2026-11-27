@@ -1,0 +1,22 @@
+{% if selected %}
+    {% set sign = question.sign %}
+    <div class="modal fade learn-help" id="learn-catalogue-entry" tabindex="-1"
+         aria-labelledby="learn-catalogue-title" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title h4" id="learn-catalogue-title">Catalogue entry for {{ sign.gardiner or sign.code_point }}</h2>
+                </div>
+                <div class="modal-body">
+                    <p>{{ sign.description }}</p>
+                    {% with classification=group_label(sign.group), catalogue_dialog=true %}
+                        {% include "signs/entry.html" %}
+                    {% endwith %}
+                </div>
+                <div class="modal-footer">
+                    <button class="primary-button" type="button" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

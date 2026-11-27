@@ -35,3 +35,10 @@ def test_shared_and_multiple_values() -> None:
 def test_insufficient_choices() -> None:
     """Return no question if too few documented signs are available."""
     assert generate_question([Sign(0x13000, {"kEH_FVal": "wn"})], Random(42)) is None
+
+
+def test_non_phonogram_values_are_excluded() -> None:
+    """A value attached to a different role cannot supply a phonogram answer."""
+    for function in ("Logogram (army)", "Classifier sitting", "Phonemogram/logogram"):
+        sign = Sign(0x13000, {"kEH_FVal": "m", "kEH_Func": function})
+        assert sign.plain_phonetic_values == ()

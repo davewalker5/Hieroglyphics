@@ -5,6 +5,100 @@
   "sha256": "a6c03de18f40f54df5bf3ea6c3152f23075ba8647520e98ea80e8e0352d65a33",
   "license_file": "Unikemet-LICENSE.txt",
   "signs": {
+    "13000": {
+      "kEH_Cat": "A-01-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "Man, seated, right knee raised, right arm raised, left arm in front of body.",
+      "kEH_Func": "Classifier human being",
+      "kEH_UniK": "A001",
+      "kEH_JSesh": "A1",
+      "kEH_HG": "A1",
+      "kEH_IFAO": "1,1"
+    },
+    "13002": {
+      "kEH_Cat": "A-01-005",
+      "kEH_Core": "C",
+      "kEH_Desc": "Man, seated on heel, right knee raised, right arm raised, left arm in front of body.",
+      "kEH_Func": "Classifier sitting",
+      "kEH_FVal": "ḥmsꞽ",
+      "kEH_UniK": "A003",
+      "kEH_JSesh": "A3",
+      "kEH_HG": "A3"
+    },
+    "13005": {
+      "kEH_Cat": "A-11-003",
+      "kEH_Core": "C",
+      "kEH_Desc": "Man, seated, right knee raised, back straight, both arms raised in front, hand palms outwards, under a corner of a wall.",
+      "kEH_Func": "Logogram (to hide)",
+      "kEH_FVal": "ꞽmn",
+      "kEH_UniK": "A005A",
+      "kEH_JSesh": "A5A",
+      "kEH_HG": "A5A",
+      "kEH_IFAO": "15,3"
+    },
+    "13006": {
+      "kEH_Cat": "A-09-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "Man, seated, right knee raised, with a vase on its side, with liquid issuing from it (W54), orientated to the front, on his head, both arms raised towards the front, hand palms outwards.",
+      "kEH_Func": "Logogram (pure, clean)",
+      "kEH_FVal": "wꜥb",
+      "kEH_UniK": "A006",
+      "kEH_JSesh": "A6",
+      "kEH_HG": "A6",
+      "kEH_IFAO": "13,5"
+    },
+    "1300E": {
+      "kEH_Cat": "A-17-003",
+      "kEH_Core": "C",
+      "kEH_Desc": "Man, seated on heel, right knee up, with a feather (H6) on his head, angling backwards, right arm forwards, forearm horizontal, holding a composite bow (T10), left arm in front of the body, holding a stick which angles backwards, leaning against the left shoulder.",
+      "kEH_Func": "Logogram (army)",
+      "kEH_FVal": "mšꜥ",
+      "kEH_UniK": "A012",
+      "kEH_JSesh": "A12",
+      "kEH_HG": "A12"
+    },
+    "13012": {
+      "kEH_Cat": "A-05-004",
+      "kEH_Core": "C",
+      "kEH_Desc": "Man, written horizontally, facing down, arms raised in front.",
+      "kEH_Func": "Logogram (to fall)",
+      "kEH_FVal": "ḫr",
+      "kEH_UniK": "A015",
+      "kEH_JSesh": "A15",
+      "kEH_HG": "A15",
+      "kEH_IFAO": "7,11"
+    },
+    "13017": {
+      "kEH_Cat": "A-06-017",
+      "kEH_Core": "C",
+      "kEH_Desc": "Old man, standing, with a bent back, right arm forwards, holding a staff/stick near the top, with the staff at a slight backward angle, left arm hanging beside the body.",
+      "kEH_Func": "Logogram (old, old age)",
+      "kEH_FVal": "ꞽꜣw",
+      "kEH_UniK": "A019",
+      "kEH_JSesh": "A19",
+      "kEH_IFAO": "9,7"
+    },
+    "13029": {
+      "kEH_Cat": "A-12-008",
+      "kEH_Core": "C",
+      "kEH_Desc": "Man, standing, back bent forwards, both arms forwards, extending downwards into a large vessel.",
+      "kEH_Func": "Logogram (brewer)",
+      "kEH_FVal": "ꜥf.ty",
+      "kEH_UniK": "A036",
+      "kEH_JSesh": "A36",
+      "kEH_HG": "A36",
+      "kEH_IFAO": "15,14"
+    },
+    "13050": {
+      "kEH_Cat": "B-01-003",
+      "kEH_Core": "C",
+      "kEH_Desc": "Woman, seated, both knees up, with covered legs and arms, with long hair.",
+      "kEH_Func": "Classifier female",
+      "kEH_UniK": "B001",
+      "kEH_JSesh": "B1",
+      "kEH_HG": "B1",
+      "kEH_IFAO": "48,3"
+    },
     "1308B": {
       "kEH_Cat": "D-12-001",
       "kEH_Core": "C",
@@ -26,6 +120,17 @@
       "kEH_JSesh": "D46",
       "kEH_HG": "D46",
       "kEH_IFAO": "114,10"
+    },
+    "130BB": {
+      "kEH_Cat": "D-34-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "Legs in a walking posture, feet orientated towards the reading direction.",
+      "kEH_Func": "Classifier movement",
+      "kEH_UniK": "D054",
+      "kEH_JSesh": "D54",
+      "kEH_HG": "D54",
+      "kEH_IFAO": "118,5",
+      "kEH_NoMirror": "Y"
     },
     "130C0": {
       "kEH_Cat": "D-35-012",
@@ -104,6 +209,26 @@
       "kEH_HG": "I10",
       "kEH_IFAO": "215,10"
     },
+    "13197": {
+      "kEH_Cat": "I-11-049",
+      "kEH_Core": "C",
+      "kEH_Desc": "A cobra (Naja haje), standing up, with expanded hood (uraeus), with a coiled tail.",
+      "kEH_Func": "Classifier female divinity",
+      "kEH_FVal": "nbw.t",
+      "kEH_UniK": "I012",
+      "kEH_JSesh": "I12",
+      "kEH_HG": "I12",
+      "kEH_IFAO": "220,4"
+    },
+    "131AC": {
+      "kEH_Cat": "L-07-004",
+      "kEH_Core": "C",
+      "kEH_Desc": "A click beetle (Lanelater Notodonta), without legs.",
+      "kEH_Func": "Logogram/phonemogram (type of beetle)",
+      "kEH_FVal": "ꜥnḫ",
+      "kEH_UniK": "L008",
+      "kEH_JSesh": "L8"
+    },
     "131CB": {
       "kEH_Cat": "M-14-001",
       "kEH_Core": "C",
@@ -122,6 +247,17 @@
       "kEH_Func": "Phonemogram",
       "kEH_FVal": "y",
       "kEH_UniK": "M017A"
+    },
+    "131CD": {
+      "kEH_Cat": "M-14-012",
+      "kEH_Core": "C",
+      "kEH_Desc": "A flowering reed (M17), on top of legs in a walking posture, feet orientated towards the reading direction (D54).",
+      "kEH_Func": "Phonemogram/logogram (to come)",
+      "kEH_FVal": "ꞽy(ꞽ)",
+      "kEH_UniK": "M018",
+      "kEH_JSesh": "M18",
+      "kEH_HG": "M18",
+      "kEH_IFAO": "248,14"
     },
     "1320E": {
       "kEH_Cat": "N-17-001",
@@ -166,6 +302,18 @@
       "kEH_JSesh": "O34",
       "kEH_HG": "O34",
       "kEH_IFAO": "317,10"
+    },
+    "1329B": {
+      "kEH_Cat": "P-01-015",
+      "kEH_Core": "C",
+      "kEH_Desc": "A boat/ship, resembling a crescent moon, on top of a rectangle representing water, with a carrying chair (Q2) inside the boat/ship, with an oar/rudder at the back.",
+      "kEH_Func": "Classifier movement",
+      "kEH_FVal": "ḫnt",
+      "kEH_UniK": "P001",
+      "kEH_JSesh": "P1",
+      "kEH_HG": "P1",
+      "kEH_IFAO": "325,8",
+      "kEH_NoRotate": "Y"
     },
     "132AA": {
       "kEH_Cat": "Q-01-022",
@@ -232,6 +380,14 @@
       "kEH_JSesh": "X1",
       "kEH_HG": "X1",
       "kEH_IFAO": "461,1"
+    },
+    "133D4": {
+      "kEH_Cat": "X-04-011",
+      "kEH_Core": "C",
+      "kEH_Desc": "A roll of bread without internal detail.",
+      "kEH_Func": "Classifier bread, festival; Phonemogram t; Logogram t (bread); Phono-repeater: sn, fḳꜣ",
+      "kEH_FVal": "t | sn, fḳꜣ",
+      "kEH_UniK": "X004B"
     }
   }
 }

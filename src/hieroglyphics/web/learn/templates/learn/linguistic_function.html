@@ -1,0 +1,22 @@
+{% extends "learn/question.html" %}
+{% block title %}Distinguish between linguistic functions{% endblock %}
+{% block introduction %}A hieroglyph can serve different roles depending on how it is used.{% endblock %}
+{% block stimulus %}
+    {% include "learn/displayed_sign.html" %}
+    <p>{{ question.scenario.context }}</p>
+{% endblock %}
+{% block choice_class %}learn-description{% endblock %}
+{% block feedback %}
+    {% set sign = question.sign %}
+    <p><strong>{{ question.correct.text }}</strong></p>
+    <p>{{ question.scenario.explanation }}</p>
+    {% if question.other_functions %}
+        <p>Other documented uses of {{ sign.gardiner }} include
+            {{ question.other_functions | map(attribute="value") | map("lower") | join(", ") }}.</p>
+    {% endif %}
+    {% include "learn/catalogue_link.html" %}
+{% endblock %}
+
+{% block exercise_dialog %}
+    {% include "learn/catalogue_dialog.html" %}
+{% endblock %}

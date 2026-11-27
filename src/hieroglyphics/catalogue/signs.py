@@ -72,8 +72,11 @@ class Sign:
         Return documented readings when every alternative is unqualified.
 
         :return: Distinct NFC readings in catalogue order, or an empty tuple
-            when any reading is missing, uncertain or otherwise qualified.
+            when any reading is missing, uncertain or its phonogram use is ambiguous.
         """
+        function = self.properties.get("kEH_Func", "Phonemogram")
+        if function.casefold() != "phonemogram":
+            return ()
         raw_values = normalize("NFC", self.properties.get("kEH_FVal", ""))
         values = tuple(value.strip() for value in raw_values.split("|"))
         if not all(_PLAIN_CONSONANTS.fullmatch(value) for value in values):
@@ -143,10 +146,10 @@ def search_signs(query: str, group: str, function: str, consonants: str) -> list
 
 def generate_catalogue(project_root: Path) -> None:
     """
-    Regenerate the packaged subset from the pinned source and the shipped table.
+    Regenerate the packaged subset from the pinned source, table and selection.
 
     :param project_root: Checkout containing the source data and application.
-    :raises ValueError: If the source checksum differs or a correspondence cannot be resolved.
+    :raises ValueError: If the checksum differs or a specified sign cannot be resolved.
     """
     source = project_root / "data"
     provenance = json.loads((source / "Unikemet-provenance.json").read_text(encoding="utf-8"))
@@ -159,8 +162,20 @@ def generate_catalogue(project_root: Path) -> None:
     correspondences = load_transliterations(str(table_path.resolve()))
     signs = load_unikemet(snapshot)
     validate_correspondences(correspondences, signs)
-    scalars = sorted({ord(glyph) for sequence in correspondences.values() for glyph in sequence})
-    data = {**provenance, "signs": {f"{scalar:05X}": signs[scalar] for scalar in scalars}}
+    scalars = {ord(glyph) for sequence in correspondences.values() for glyph in sequence}
+    selection = source / "catalogue-additions.txt"
+    for line in selection.read_text(encoding="utf-8").splitlines():
+        code_point = line.partition("#")[0].strip()
+        if code_point:
+            scalar = int(code_point, 16)
+            if scalar not in signs:
+                raise ValueError(f"Unknown catalogue addition U+{scalar:05X}")
+            scalars.add(scalar)
+
+    data = {
+        **provenance,
+        "signs": {f"{scalar:05X}": signs[scalar] for scalar in sorted(scalars)},
+    }
     destination = project_root / "src/hieroglyphics/catalogue/data"
     (destination / "signs.json").write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (destination / provenance["license_file"]).write_bytes((source / provenance["license_file"]).read_bytes())

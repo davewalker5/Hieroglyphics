@@ -53,6 +53,7 @@ include-package-data = true
 where = ["src"]
 
 [tool.setuptools.package-data]
+"hieroglyphics.learning" = ["data/*.json"]
 "hieroglyphics.catalogue" = ["data/*.json", "data/*.txt"]
 "hieroglyphics.transliteration" = ["data/*.csv"]
 "hieroglyphics.web" = [
