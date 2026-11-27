@@ -1,13 +1,6 @@
 {% extends "layout.html" %}
-{% from "sign_links.html" import link_signs %}
 {% set title = "English to Hieroglyphic Transliteration" %}
 {% block title %}{{ title }}{% endblock %}
-{% if direction == 0 %}
-    {% set glyph_cell_style = "hieroglyph-cell-l-to-r" %}
-{% else %}
-    {% set glyph_cell_style = "hieroglyph-cell-r-to-l" %}
-{% endif %}
-
 {% block content %}
     <section class="page-heading">
         <div>
@@ -21,9 +14,8 @@
         </div>
     </section>
 
-    {% include "error.html" with context %}
-
-    <form method="post" class="workspace-panel">
+    <form method="post" class="workspace-panel" id="transliteration-form"
+          data-preview-url="{{ url_for('transliterate.transliterate_word', preview=1) }}">
         <div class="panel-heading">
             <div>
                 <h2>Compose a phrase</h2>
@@ -34,7 +26,7 @@
             <label class="form-field" for="word">
                 <span>English word or phrase</span>
                 <input class="form-control" name="word" id="word" placeholder="e.g. Valley of the Kings"
-                       value="{{ word }}" autocomplete="off" required>
+                       value="{{ word }}" autocomplete="off">
             </label>
             <label class="form-field" for="direction">
                 <span>Text direction</span>
@@ -44,37 +36,12 @@
                 </select>
             </label>
         </div>
-        <div class="form-actions">
-            <button type="submit" value="create" class="primary-button">
-                Transliterate <span aria-hidden="true">→</span>
-            </button>
+        <div id="transliteration-result" aria-live="polite">
+            {% include "transliterate/result.html" %}
         </div>
-        {% if transliteration %}
-            <section class="result-panel" aria-live="polite">
-                <div class="result-heading">
-                    <div>
-                        <p class="eyebrow">Transliteration result</p>
-                        <h2>{{ word }}</h2>
-                    </div>
-                    <span class="direction-label">
-                        {% if direction == 0 %}Left to right{% else %}Right to left{% endif %}
-                    </span>
-                </div>
-                <div class="glyph-scroll">
-                    <table class="glyph-result">
-                        <tr class="source-letters" aria-label="English letters">
-                        {% for l in letters %}
-                            <td class="letter-cell">{{ l }}</td>
-                        {% endfor %}
-                        </tr>
-                        <tr aria-label="Hieroglyphic transliteration">
-                        {% for h in transliteration %}
-                            <td class="{{ glyph_cell_style }}">{{ link_signs(h) }}</td>
-                        {% endfor %}
-                        </tr>
-                </table>
-                </div>
-            </section>
-        {% endif %}
     </form>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='script/transliterate.js') }}"></script>
 {% endblock %}

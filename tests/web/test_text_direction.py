@@ -16,6 +16,7 @@ def test_can_get_r_to_l_description():
     assert "right to left" == description
 
 
+@pytest.mark.parametrize("preview", [False, True])
 @pytest.mark.parametrize(
     ("direction", "direction_class", "letters", "code_points"),
     [
@@ -24,19 +25,31 @@ def test_can_get_r_to_l_description():
     ],
 )
 def test_transliteration_direction(
+    preview: bool,
     direction: int,
     direction_class: str,
     letters: list[str],
     code_points: list[tuple[int, ...]],
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """Check the output order, repeated sign and glyph orientation class in each direction."""
+    """
+    Check sign order, repetition and orientation in both response formats.
+
+    :param preview: Whether to request the live result fragment.
+    :param direction: Reading direction submitted by the user.
+    :param direction_class: Expected suffix of the glyph orientation class.
+    :param letters: Expected order of source letters.
+    :param code_points: Expected Unicode sequences for the glyphs.
+    :param monkeypatch: Fixture used to select the packaged transliteration data.
+    """
     monkeypatch.delenv("HIEROGLYPHICS_DATA", raising=False)
     with create_app().test_client() as client:
-        response = client.post("/transliterate/", data={"word": "A x!B", "direction": direction})
+        url = "/transliterate/?preview=1" if preview else "/transliterate/"
+        response = client.post(url, data={"word": "A x!B", "direction": direction})
 
     assert response.status_code == 200
     html = response.get_data(as_text=True)
+    assert ('id="transliteration-form"' in html) == (not preview)
     assert re.findall(r'<td class="letter-cell">([^<]+)</td>', html) == letters
     glyphs = re.findall(rf'<td class="hieroglyph-cell-{direction_class}">(.*?)</td>', html, re.S)
     assert [tuple(map(ord, re.sub(r"<[^>]+>", "", glyph))) for glyph in glyphs] == code_points
