@@ -42,6 +42,7 @@ def index() -> str:
     return render_template(
         "signs/index.html",
         version=version,
+        group_label=group_label,
         signs=search_signs(query, group, function, consonants),
         groups={code: group_label(code) for code in groups},
         functions=functions,

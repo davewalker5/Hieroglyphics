@@ -1,0 +1,20 @@
+{% set title_id = dialog_id ~ "-title" %}
+<div class="modal fade learn-help" id="{{ dialog_id }}" tabindex="-1"
+     aria-labelledby="{{ title_id }}" aria-hidden="true">
+    <div class="modal-dialog sign-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title h4" id="{{ title_id }}">Catalogue entry for {{ sign.gardiner or sign.code_point }}</h2>
+            </div>
+            <div class="modal-body">
+                <p>{{ sign.description or "Description unavailable" }}</p>
+                {% with classification=group_label(sign.group), catalogue_dialog=true %}
+                    {% include "signs/entry.html" %}
+                {% endwith %}
+            </div>
+            <div class="modal-footer">
+                <button class="primary-button" type="button" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

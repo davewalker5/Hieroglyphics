@@ -1,0 +1,6 @@
+{% from "signs/dialog_attributes.html" import sign_dialog_id %}
+{% for sign in dialog_signs %}
+    {% with dialog_id=sign_dialog_id(sign) %}
+        {% include "signs/dialog.html" %}
+    {% endwith %}
+{% endfor %}

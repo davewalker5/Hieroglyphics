@@ -1,0 +1,35 @@
+{% from "sign_links.html" import link_signs %}
+{% if direction == 0 %}
+    {% set glyph_cell_style = "hieroglyph-cell-l-to-r" %}
+{% else %}
+    {% set glyph_cell_style = "hieroglyph-cell-r-to-l" %}
+{% endif %}
+
+{% include "error.html" with context %}
+{% if transliteration %}
+    <section class="result-panel">
+        <div class="result-heading">
+            <div>
+                <p class="eyebrow">Transliteration result</p>
+                <h2>{{ word }}</h2>
+            </div>
+            <span class="direction-label">
+                {% if direction == 0 %}Left to right{% else %}Right to left{% endif %}
+            </span>
+        </div>
+        <div class="glyph-scroll">
+            <table class="glyph-result">
+                <tr class="source-letters" aria-label="English letters">
+                    {% for letter in letters %}
+                        <td class="letter-cell">{{ letter }}</td>
+                    {% endfor %}
+                </tr>
+                <tr aria-label="Hieroglyphic transliteration">
+                    {% for glyph in transliteration %}
+                        <td class="{{ glyph_cell_style }}">{{ link_signs(glyph) }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+    </section>
+{% endif %}

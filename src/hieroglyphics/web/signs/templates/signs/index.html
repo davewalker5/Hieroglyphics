@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% from "signs/dialog_attributes.html" import sign_dialog_attributes %}
 {% block title %}Sign catalogue{% endblock %}
 
 {% block content %}
@@ -48,7 +49,8 @@
         <ul class="sign-grid">
             {% for sign in signs %}
                 <li>
-                    <a class="sign-card" href="{{ url_for('signs.detail', code_point=sign.code_point) }}">
+                    <a class="sign-card" href="{{ url_for('signs.detail', code_point=sign.code_point) }}"
+                       {{ sign_dialog_attributes(sign) }}>
                         <span class="catalogue-glyph" aria-hidden="true">{{ sign.glyph }}</span>
                         <strong>{{ sign.gardiner or sign.code_point }}</strong>
                         <span>{{ sign.description or "Description unavailable" }}</span>
@@ -60,8 +62,8 @@
         <p>No signs match your search and filters.</p>
     {% endif %}
 
-    <p class="sign-source">
-        <a href="https://www.unicode.org/Public/{{ version }}/ucd/Unikemet.txt">UniKemet {{ version }}</a>
-        · <a href="{{ url_for('signs.licence') }}">Unicode data licence</a>
-    </p>
+    {% include "sign_sources.html" %}
+    {% with dialog_signs=signs %}
+        {% include "signs/dialogs.html" %}
+    {% endwith %}
 {% endblock %}
