@@ -1,0 +1,32 @@
+{% macro render_quadrats(words, right_to_left, quadrat_size) %}
+    <div class="quadrat-output" dir="{{ 'rtl' if right_to_left else 'ltr' }}"
+         role="group" aria-label="Hieroglyphic transliteration in quadrats">
+        {% for word in words %}
+            <div class="quadrat-word">
+                {% for drawing in word %}
+                    <div class="quadrat-frame">
+                        <svg class="quadrat" xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 {{ drawing.spaced_width }} {{ quadrat_size }}">
+                            {% if right_to_left %}
+                                <g transform="translate({{ drawing.spaced_width }} 0) scale(-1 1)">
+                            {% endif %}
+                            <g transform="translate({{ drawing.left_padding }} {{ drawing.top_padding }}) scale({{ drawing.scale }})">
+                                {% for sign in drawing.signs %}
+                                    {% set details = catalogue_sign(sign.glyph) %}
+                                    {% if details %}
+                                        <a class="sign-glyph-link"
+                                           href="{{ url_for('signs.detail', code_point=details.code_point) }}"
+                                           aria-label="Explore {{ details.gardiner or details.code_point }}">
+                                    {% endif %}
+                                    <text x="{{ sign.x }}" y="{{ sign.y }}">{{ sign.glyph }}</text>
+                                    {% if details %}</a>{% endif %}
+                                {% endfor %}
+                            </g>
+                            {% if right_to_left %}</g>{% endif %}
+                        </svg>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}

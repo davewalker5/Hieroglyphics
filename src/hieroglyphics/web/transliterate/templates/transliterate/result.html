@@ -1,4 +1,5 @@
 {% from "sign_links.html" import link_signs %}
+{% from "quadrats.html" import render_quadrats %}
 {% if direction == 0 %}
     {% set glyph_cell_style = "hieroglyph-cell-l-to-r" %}
 {% else %}
@@ -6,7 +7,7 @@
 {% endif %}
 
 {% include "error.html" with context %}
-{% if transliteration %}
+{% if transliteration or drawings %}
     <section class="result-panel">
         <div class="result-heading">
             <div>
@@ -17,19 +18,25 @@
                 {% if direction == 0 %}Left to right{% else %}Right to left{% endif %}
             </span>
         </div>
-        <div class="glyph-scroll">
-            <table class="glyph-result">
-                <tr class="source-letters" aria-label="English letters">
-                    {% for letter in letters %}
-                        <td class="letter-cell">{{ letter }}</td>
-                    {% endfor %}
-                </tr>
-                <tr aria-label="Hieroglyphic transliteration">
-                    {% for glyph in transliteration %}
-                        <td class="{{ glyph_cell_style }}">{{ link_signs(glyph) }}</td>
-                    {% endfor %}
-                </tr>
-            </table>
-        </div>
+        {% if drawings %}
+            <p class="quadrat-note">Quadrats group signs spatially. This preview arranges them automatically
+                using sign proportions and simplified rules for spacing and balance.</p>
+            {{ render_quadrats(drawings, direction == 1, quadrat_size) }}
+        {% else %}
+            <div class="glyph-scroll">
+                <table class="glyph-result">
+                    <tr class="source-letters" aria-label="English letters">
+                        {% for letter in letters %}
+                            <td class="letter-cell">{{ letter }}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr aria-label="Hieroglyphic transliteration">
+                        {% for glyph in transliteration %}
+                            <td class="{{ glyph_cell_style }}">{{ link_signs(glyph) }}</td>
+                        {% endfor %}
+                    </tr>
+                </table>
+            </div>
+        {% endif %}
     </section>
 {% endif %}

@@ -184,6 +184,10 @@ h1 {
     padding: 25px 24px;
 }
 
+.transliteration-options {
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+}
+
 .form-field > span {
     display: block;
     margin-bottom: 8px;
@@ -290,6 +294,63 @@ h1 {
 }
 
 .hieroglyph-cell-r-to-l { transform: scaleX(-1); }
+
+.quadrat-boundary-option {
+    grid-column: 1 / -1;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.quadrat-boundary-option input {
+    margin-inline-end: 6px;
+    accent-color: var(--cyan);
+}
+
+.quadrat-boundaries-hidden .quadrat-frame {
+    border-color: transparent;
+}
+
+.quadrat-note {
+    margin: 16px 22px 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.quadrat-output, .quadrat-word {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.quadrat-output {
+    gap: 12px 28px;
+    padding: 16px 22px 24px;
+}
+
+.quadrat-word {
+    row-gap: 8px;
+    max-width: 100%;
+}
+
+.quadrat-frame {
+    max-width: 100%;
+    padding: 5px 7px;
+    border: 1px dashed var(--muted);
+    border-radius: 8px;
+}
+
+.quadrat {
+    display: block;
+    height: clamp(38px, 10vw, 70px);
+    max-width: 100%;
+    overflow: visible;
+    fill: currentColor;
+}
+
+.quadrat text {
+    direction: ltr;
+    font: 1000px "Catalogue Hieroglyphs", sans-serif;
+}
 
 .error {
     display: grid;

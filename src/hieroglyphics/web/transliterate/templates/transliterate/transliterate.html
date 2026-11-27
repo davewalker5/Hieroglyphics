@@ -22,7 +22,7 @@
                 <p>Letters without an equivalent are omitted from the result.</p>
             </div>
         </div>
-        <div class="form-grid">
+        <div class="form-grid transliteration-options">
             <label class="form-field" for="word">
                 <span>English word or phrase</span>
                 <input class="form-control" name="word" id="word" placeholder="e.g. Valley of the Kings"
@@ -34,6 +34,17 @@
                     <option value="0" {% if direction == 0 %}selected{% endif %}>Left to right</option>
                     <option value="1" {% if direction == 1 %}selected{% endif %}>Right to left</option>
                 </select>
+            </label>
+            <label class="form-field" for="layout">
+                <span>Layout</span>
+                <select class="form-select" name="layout" id="layout">
+                    <option value="linear" {% if layout == "linear" %}selected{% endif %}>Linear</option>
+                    <option value="quadrat" {% if layout == "quadrat" %}selected{% endif %}>Quadrat</option>
+                </select>
+            </label>
+            <label class="quadrat-boundary-option" for="show-quadrat-boundaries" hidden>
+                <input type="checkbox" id="show-quadrat-boundaries" checked>
+                Show quadrat boundaries
             </label>
         </div>
         <div id="transliteration-result" aria-live="polite">
