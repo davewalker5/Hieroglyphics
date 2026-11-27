@@ -19,6 +19,7 @@ from hieroglyphics.learning.phonetic import (
 from hieroglyphics.learning.phonogram import generate_phonogram_question
 from hieroglyphics.learning.questions import Question
 from hieroglyphics.learning.quiz import QuizRun
+from hieroglyphics.learning.reading_direction import generate_direction_question
 
 learn_bp = Blueprint("learn", __name__, template_folder="templates")
 _SEED_BYTES = 16
@@ -100,6 +101,18 @@ def phonogram() -> str:
     :return: Rendered exercise page, including the score after the final answer.
     """
     return _run_quiz("phonogram", "learn-phonogram", generate_phonogram_question)
+
+
+@learn_bp.route("/reading-direction", methods=["GET", "POST"])
+def reading_direction() -> str:
+    """
+    Present and grade questions about the reading direction of a row.
+
+    :return: Rendered exercise page, including the score after the final answer.
+    """
+    return _run_quiz(
+        "reading_direction", "learn-reading-direction", generate_direction_question
+    )
 
 
 def _run_quiz(

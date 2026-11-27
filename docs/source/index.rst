@@ -5,9 +5,10 @@ Hieroglyphics Transliteration
    :maxdepth: 2
    :caption: Contents:
 
+   catalogue/index
+   learning/index
    transliteration/index
    web/index
-   catalogue/signs
 
 Indices and tables
 ==================
