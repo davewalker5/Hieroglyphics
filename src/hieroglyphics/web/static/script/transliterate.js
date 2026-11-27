@@ -47,6 +47,12 @@
     updateBoundaryDisplay();
     boundaries.addEventListener("change", updateBoundaryDisplay);
     layout.addEventListener("change", updateBoundaryDisplay);
+    result.addEventListener("click", (event) => {
+        // Bootstrap cancels navigation for HTML anchors but not SVG anchors.
+        if (event.target.closest('svg a[data-bs-toggle="modal"]')) {
+            event.preventDefault();
+        }
+    });
     word.addEventListener("input", updateResult);
     form.addEventListener("change", (event) => {
         if (event.target.matches("select")) {

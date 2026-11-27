@@ -2,9 +2,11 @@ from enum import Enum
 
 from flask import Blueprint, render_template, request
 
+from hieroglyphics.catalogue.signs import group_label
 from hieroglyphics.composition.composer import compose
 from hieroglyphics.transliteration import get_transliterations, transliterate
 from hieroglyphics.web.quadrat_renderer import QUADRAT_SIZE, render_quadrats
+from hieroglyphics.web.signs.signs_blueprint import catalogue_sign
 from hieroglyphics.web.transliterate.text_direction import TextDirection
 
 transliterate_bp = Blueprint("transliterate", __name__, template_folder="templates")
@@ -54,9 +56,17 @@ def transliterate_word() -> str:
                 letters.reverse()
                 glyphs.reverse()
 
+    dialog_signs = []
     template = "transliterate/transliterate.html"
     if request.method == "POST" and request.args.get("preview") == "1":
         template = "transliterate/result.html"
+    else:
+        # Keep one dialog per available sign outside the replaceable live preview.
+        table = get_transliterations("alphabet_l_to_r")
+        for glyph in dict.fromkeys("".join(table.values())):
+            sign = catalogue_sign(glyph)
+            if sign is not None:
+                dialog_signs.append(sign)
 
     return render_template(
         template,
@@ -68,4 +78,6 @@ def transliterate_word() -> str:
         drawings=drawings,
         quadrat_size=QUADRAT_SIZE,
         error=error,
+        dialog_signs=dialog_signs,
+        group_label=group_label,
     )

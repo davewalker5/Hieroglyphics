@@ -67,3 +67,23 @@ def test_boundary_control_is_checked_and_kept_outside_the_live_result() -> None:
     assert 'id="show-quadrat-boundaries" checked' in page
     assert 'id="show-quadrat-boundaries"' not in preview
     assert 'class="quadrat-frame"' in preview
+
+
+@pytest.mark.parametrize("layout", ["linear", "quadrat"])
+def test_live_glyphs_target_unique_catalogue_dialogs(layout: str) -> None:
+    """
+    Match repeated signs in a live preview to one persistent dialog.
+
+    :param layout: Transliteration layout to render.
+    """
+    form = {"word": "nn", "direction": 1, "layout": layout}
+    with create_app().test_client() as client:
+        page = client.get("/transliterate/").get_data(as_text=True)
+        preview = client.post(PREVIEW_URL, data=form).get_data(as_text=True)
+
+    targets = re.findall(r'data-bs-target="#(catalogue-entry-[^"]+)"', preview)
+    assert targets == ["catalogue-entry-13216"] * 2
+    assert preview.count('aria-haspopup="dialog"') == 2
+    assert page.count('id="catalogue-entry-13216"') == 1
+    assert 'Catalogue entry for N35' in page
+    assert 'id="catalogue-entry-13216"' not in preview

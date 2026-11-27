@@ -21,7 +21,7 @@
         {% if drawings %}
             <p class="quadrat-note">Quadrats group signs spatially. This preview arranges them automatically
                 using sign proportions and simplified rules for spacing and balance.</p>
-            {{ render_quadrats(drawings, direction == 1, quadrat_size) }}
+            {{ render_quadrats(drawings, direction == 1, quadrat_size, dialogs=true) }}
         {% else %}
             <div class="glyph-scroll">
                 <table class="glyph-result">
@@ -32,7 +32,7 @@
                     </tr>
                     <tr aria-label="Hieroglyphic transliteration">
                         {% for glyph in transliteration %}
-                            <td class="{{ glyph_cell_style }}">{{ link_signs(glyph) }}</td>
+                            <td class="{{ glyph_cell_style }}">{{ link_signs(glyph, dialogs=true) }}</td>
                         {% endfor %}
                     </tr>
                 </table>
