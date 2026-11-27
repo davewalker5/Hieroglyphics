@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hieroglyphics"
-version = "1.15.0"
+version = "1.16.0"
 description = "English to Hieroglyphics Transliterator"
 readme = "README.rst"
 requires-python = ">=3.10"
@@ -14,6 +14,7 @@ authors = [
 ]
 dependencies = [
     "Flask>=3.1,<4",
+    "itsdangerous>=2.2,<3",
     "Werkzeug>=3.1,<4",
 ]
 
@@ -55,6 +56,7 @@ where = ["src"]
 "hieroglyphics.catalogue" = ["data/*.json", "data/*.txt"]
 "hieroglyphics.transliteration" = ["data/*.csv"]
 "hieroglyphics.web" = [
+    "quiz_config.json",
     "static/**/*",
     "templates/*.html",
 ]
@@ -62,6 +64,7 @@ where = ["src"]
 "hieroglyphics.web.transliterate" = ["templates/transliterate/*.html"]
 
 "hieroglyphics.web.signs" = ["templates/signs/*.html"]
+"hieroglyphics.web.learn" = ["templates/learn/*.html"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
