@@ -1,0 +1,19 @@
+{% extends "learn/question.html" %}
+{% block title %}Recognise uniliteral, biliteral and triliteral phonograms{% endblock %}
+{% block introduction %}Classify each phonogram by the number of consonants it represents in the reading shown.{% endblock %}
+{% block stimulus %}
+    {% include "learn/displayed_sign.html" %}
+{% endblock %}
+{% block choice_class %}learn-description{% endblock %}
+{% block feedback %}
+    {% set sign = question.sign %}
+    {% set count = question.consonants | length %}
+    <p><strong>{{ question.correct.text }}</strong></p>
+    <p>The reading <strong>{{ question.reading }}</strong> represents
+        {{ count }} {{ "consonant" if count == 1 else "consonants" }}
+        ({{ question.consonants | join(", ") }}).</p>
+    {% include "learn/catalogue_link.html" %}
+{% endblock %}
+{% block exercise_dialog %}
+    {% include "learn/catalogue_dialog.html" %}
+{% endblock %}

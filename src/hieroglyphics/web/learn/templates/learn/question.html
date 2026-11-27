@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <p><a href="{{ url_for('learn.index') }}">← Learn</a></p>
+    <section class="page-heading">
+        <div>
+            <h1>{{ self.title() }}</h1>
+            <p class="lede">{% block introduction %}{% endblock %}</p>
+        </div>
+    </section>
+
+    <section class="workspace-panel learn-question" aria-label="Exercise question">
+        {% if question %}
+            <p>Question {{ question_number }} of {{ quiz.limit }}</p>
+            <div class="learn-prompt">
+                <h2>{{ question.prompt }}</h2>
+                {% if question.has_transliteration_help %}
+                    <button class="learn-info" type="button" data-bs-toggle="modal" data-bs-target="#transliteration-help"
+                            aria-haspopup="dialog" aria-label="About these transliteration letters">
+                        <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    </button>
+                {% endif %}
+            </div>
+            {% block stimulus %}{% endblock %}
+            {% if selected %}
+                {% set is_correct = selected == question.correct %}
+                <section class="learn-feedback {{ 'learn-feedback-correct' if is_correct else 'learn-feedback-incorrect' }}"
+                         aria-labelledby="learn-verdict">
+                    <header class="learn-feedback-header">
+                        <h3 id="learn-verdict">
+                            <i class="fas {{ 'fa-check-circle' if is_correct else 'fa-times-circle' }}" aria-hidden="true"></i>
+                            {{ "Correct!" if is_correct else "Incorrect." }}
+                        </h3>
+                        <p>You chose <span class="{{ self.choice_class() }} learn-answer">{{ selected.text }}</span></p>
+                    </header>
+                    <div class="learn-feedback-body">
+                        {% block feedback %}{% endblock %}
+                    </div>
+                </section>
+                {% if not quiz.complete %}
+                    <form method="get" action="{{ exercise_url }}">
+                        <input type="hidden" name="quiz" value="{{ quiz_token }}">
+                        <button class="primary-button" type="submit">Next question</button>
+                    </form>
+                {% endif %}
+            {% else %}
+                <form method="post" action="{{ exercise_url }}">
+                    <input type="hidden" name="quiz" value="{{ quiz_token }}">
+                    <div class="sign-grid">
+                        {% for choice in question.choices %}
+                            <button class="learn-choice" type="submit" name="choice" value="{{ choice.identifier }}"
+                                    aria-label="Choice {{ loop.index }}: {{ choice.text }}">
+                                <span class="{% block choice_class scoped %}{% endblock %}">{{ choice.text }}</span>
+                            </button>
+                        {% endfor %}
+                    </div>
+                </form>
+            {% endif %}
+        {% else %}
+            <p>There are too few suitable catalogue entries to generate a question.</p>
+        {% endif %}
+    </section>
+
+    {% if selected and quiz.complete %}
+        <section class="workspace-panel learn-results" aria-labelledby="quiz-results">
+            <h2 id="quiz-results">Quiz results</h2>
+            <div class="learn-score">
+                <label for="quiz-correct">Correct answers</label>
+                <strong>{{ quiz.correct }} / {{ quiz.limit }}</strong>
+                <progress id="quiz-correct" value="{{ quiz.correct }}" max="{{ quiz.limit }}"></progress>
+            </div>
+            <div class="learn-score">
+                <label for="quiz-percentage">Percentage correct</label>
+                <strong>{{ ("%0.1f" | format(quiz.percentage)).removesuffix(".0") }}%</strong>
+                <progress id="quiz-percentage" value="{{ quiz.percentage }}" max="100"></progress>
+            </div>
+            <p>Incorrect answers <strong>{{ quiz.incorrect }}</strong></p>
+            <form method="get" action="{{ exercise_url }}">
+                <button class="primary-button" type="submit">Try again</button>
+            </form>
+        </section>
+    {% endif %}
+
+    {% block exercise_dialog %}{% endblock %}
+
+    {% if question and question.has_transliteration_help %}
+        {% include "learn/transliteration_help.html" %}
+    {% endif %}
+{% endblock %}

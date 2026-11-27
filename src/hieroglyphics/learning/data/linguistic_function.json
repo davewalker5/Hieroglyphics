@@ -1,0 +1,170 @@
+[
+  {
+    "code_point": "U+13005",
+    "function": "LOGOGRAM",
+    "context": "A scribe uses this sign to write the whole word meaning ‘to hide’.",
+    "explanation": "The sign stands for the whole word meaning ‘to hide’. That is a logogram use."
+  },
+  {
+    "code_point": "U+13006",
+    "function": "LOGOGRAM",
+    "context": "A scribe uses this sign to write the whole word meaning ‘pure’.",
+    "explanation": "The sign stands for the whole word meaning ‘pure’. That is a logogram use."
+  },
+  {
+    "code_point": "U+1300E",
+    "function": "LOGOGRAM",
+    "context": "A scribe uses this sign to write the whole word meaning ‘army’.",
+    "explanation": "The sign stands for the whole word meaning ‘army’. That is a logogram use."
+  },
+  {
+    "code_point": "U+13012",
+    "function": "LOGOGRAM",
+    "context": "A scribe uses this sign to write the whole word meaning ‘to fall’.",
+    "explanation": "The sign stands for the whole word meaning ‘to fall’. That is a logogram use."
+  },
+  {
+    "code_point": "U+13017",
+    "function": "LOGOGRAM",
+    "context": "A scribe uses this sign to write the whole word meaning ‘old age’.",
+    "explanation": "The sign stands for the whole word meaning ‘old age’. That is a logogram use."
+  },
+  {
+    "code_point": "U+13029",
+    "function": "LOGOGRAM",
+    "context": "A scribe uses this sign to write the whole word meaning ‘brewer’.",
+    "explanation": "The sign stands for the whole word meaning ‘brewer’. That is a logogram use."
+  },
+  {
+    "code_point": "U+131AC",
+    "function": "LOGOGRAM",
+    "context": "A scribe uses this sign to write the whole word meaning ‘a type of beetle’.",
+    "explanation": "The sign stands for the whole word meaning ‘a type of beetle’. That is a logogram use."
+  },
+  {
+    "code_point": "U+131CD",
+    "function": "LOGOGRAM",
+    "context": "A scribe uses this sign to write the whole word meaning ‘to come’.",
+    "explanation": "The sign stands for the whole word meaning ‘to come’. That is a logogram use."
+  },
+  {
+    "code_point": "U+133D4",
+    "function": "LOGOGRAM",
+    "context": "A scribe uses this sign to write the whole word meaning ‘bread’.",
+    "explanation": "The sign stands for the whole word meaning ‘bread’. That is a logogram use."
+  },
+  {
+    "code_point": "U+13000",
+    "function": "DETERMINATIVE",
+    "context": "The consonants are already written. This sign shows that the word relates to a human being.",
+    "explanation": "The sign gives a clue to the meaning without adding consonants. That is a determinative use."
+  },
+  {
+    "code_point": "U+13002",
+    "function": "DETERMINATIVE",
+    "context": "The consonants are already written. This sign shows that the word relates to sitting.",
+    "explanation": "The sign gives a clue to the meaning without adding consonants. That is a determinative use."
+  },
+  {
+    "code_point": "U+13050",
+    "function": "DETERMINATIVE",
+    "context": "The consonants are already written. This sign shows that the word relates to a female person.",
+    "explanation": "The sign gives a clue to the meaning without adding consonants. That is a determinative use."
+  },
+  {
+    "code_point": "U+130BB",
+    "function": "DETERMINATIVE",
+    "context": "The consonants are already written. This sign shows that the word relates to movement.",
+    "explanation": "The sign gives a clue to the meaning without adding consonants. That is a determinative use."
+  },
+  {
+    "code_point": "U+13197",
+    "function": "DETERMINATIVE",
+    "context": "The consonants are already written. This sign shows that the word relates to a female deity.",
+    "explanation": "The sign gives a clue to the meaning without adding consonants. That is a determinative use."
+  },
+  {
+    "code_point": "U+1329B",
+    "function": "DETERMINATIVE",
+    "context": "The consonants are already written. This sign shows that the word relates to movement.",
+    "explanation": "The sign gives a clue to the meaning without adding consonants. That is a determinative use."
+  },
+  {
+    "code_point": "U+133D4",
+    "function": "DETERMINATIVE",
+    "context": "The consonants are already written. This sign shows that the word relates to bread.",
+    "explanation": "The sign gives a clue to the meaning without adding consonants. That is a determinative use."
+  },
+  {
+    "code_point": "U+1308B",
+    "function": "PHONOGRAM",
+    "context": "In this spelling the sign supplies the consonantal value r.",
+    "explanation": "The sign supplies the consonants written as r. That is a phonogram use."
+  },
+  {
+    "code_point": "U+130A7",
+    "function": "PHONOGRAM",
+    "context": "In this spelling the sign supplies the consonantal value d.",
+    "explanation": "The sign supplies the consonants written as d. That is a phonogram use."
+  },
+  {
+    "code_point": "U+130C0",
+    "function": "PHONOGRAM",
+    "context": "In this spelling the sign supplies the consonantal value b.",
+    "explanation": "The sign supplies the consonants written as b. That is a phonogram use."
+  },
+  {
+    "code_point": "U+1313F",
+    "function": "PHONOGRAM",
+    "context": "In this spelling the sign supplies the consonantal value ꜣ.",
+    "explanation": "The sign supplies the consonants written as ꜣ. That is a phonogram use."
+  },
+  {
+    "code_point": "U+13153",
+    "function": "PHONOGRAM",
+    "context": "In this spelling the sign supplies the consonantal value m.",
+    "explanation": "The sign supplies the consonants written as m. That is a phonogram use."
+  },
+  {
+    "code_point": "U+13171",
+    "function": "PHONOGRAM",
+    "context": "In this spelling the sign supplies the consonantal value w.",
+    "explanation": "The sign supplies the consonants written as w. That is a phonogram use."
+  },
+  {
+    "code_point": "U+131CB",
+    "function": "PHONOGRAM",
+    "context": "In this spelling the sign supplies the consonantal value ꞽ.",
+    "explanation": "The sign supplies the consonants written as ꞽ. That is a phonogram use."
+  },
+  {
+    "code_point": "U+13216",
+    "function": "PHONOGRAM",
+    "context": "In this spelling the sign supplies the consonantal value n.",
+    "explanation": "The sign supplies the consonants written as n. That is a phonogram use."
+  },
+  {
+    "code_point": "U+133CF",
+    "function": "PHONOGRAM",
+    "context": "In this spelling the sign supplies the consonantal value t.",
+    "explanation": "The sign supplies the consonants written as t. That is a phonogram use."
+  },
+  {
+    "code_point": "U+131AC",
+    "function": "PHONOGRAM",
+    "context": "In this spelling the sign supplies the consonantal value ꜥnḫ.",
+    "explanation": "The sign supplies the consonants written as ꜥnḫ. That is a phonogram use."
+  },
+  {
+    "code_point": "U+133D4",
+    "function": "PHONOGRAM",
+    "context": "In this spelling the sign supplies the consonantal value t.",
+    "explanation": "The sign supplies the consonants written as t. That is a phonogram use."
+  },
+  {
+    "code_point": "U+131CD",
+    "function": "PHONOGRAM",
+    "context": "In this use the sign supplies consonants as part of a spelling.",
+    "explanation": "The sign contributes consonants to the spelling. That is a phonogram use."
+  }
+]

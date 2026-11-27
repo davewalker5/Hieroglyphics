@@ -5,5 +5,9 @@ recursive-include src/hieroglyphics/web/static *
 recursive-include src/hieroglyphics/web/templates *.html
 recursive-include src/hieroglyphics/web/alphabet/templates *.html
 recursive-include src/hieroglyphics/web/transliterate/templates *.html
-recursive-include src/hieroglyphics/catalogue/data *.json *.txt
+include src/hieroglyphics/catalogue/data/signs.json
+include src/hieroglyphics/catalogue/data/Unikemet-LICENSE.txt
 recursive-include src/hieroglyphics/web/signs/templates *.html
+recursive-include src/hieroglyphics/web/learn/templates *.html
+include src/hieroglyphics/web/quiz_config.json
+recursive-include src/hieroglyphics/learning/data *.json

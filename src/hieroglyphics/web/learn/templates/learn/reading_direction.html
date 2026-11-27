@@ -1,0 +1,32 @@
+{% extends "learn/question.html" %}
+{% block title %}Determine the reading direction{% endblock %}
+{% block introduction %}Practise with constructed examples of horizontal hieroglyphic writing.{% endblock %}
+{% block stimulus %}
+    {{ glyph_row(question.signs, question.mirrored, selected) }}
+{% endblock %}
+{% block choice_class %}learn-description{% endblock %}
+{% block feedback %}
+    {% set start = "right" if question.mirrored else "left" %}
+    {% set end = "left" if question.mirrored else "right" %}
+    <p><strong>{{ question.correct.text }}</strong></p>
+    <p>The highlighted figures face {{ start }}. In these rows, figures face the start
+        of the line. Begin at the {{ start }} edge and read towards the {{ end }}.</p>
+    <p>The same sequence reads {{ end }} to {{ start }} when the sign order and the
+        glyphs are both reversed.</p>
+    {{ glyph_row(question.signs, not question.mirrored, true) }}
+{% endblock %}
+
+{% macro glyph_row(signs, mirrored, highlight) %}
+    {% set facing = "right" if mirrored else "left" %}
+    {% set visual_order = signs | reverse if mirrored else signs %}
+    <div class="learn-direction-row" dir="ltr" role="img"
+         aria-label="Illustrative row with figures facing {{ facing }}">
+        {% for sign in visual_order %}
+            {% set clue = loop.first or loop.last %}
+            <span aria-hidden="true"
+                  class="learn-direction-sign{{ ' learn-direction-clue' if highlight and clue else '' }}">
+                <span class="hieroglyph-cell-{{ 'r-to-l' if mirrored else 'l-to-r' }}">{{ sign.glyph }}</span>
+            </span>
+        {% endfor %}
+    </div>
+{% endmacro %}

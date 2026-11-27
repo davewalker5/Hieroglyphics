@@ -1,0 +1,28 @@
+{% extends "learn/question.html" %}
+{% block title %}Identify the Gardiner classification of a sign{% endblock %}
+{% block introduction %}Gardiner’s sign list is a modern scholarly reference that groups signs by what they depict.{% endblock %}
+{% block stimulus %}
+    {% include "learn/displayed_sign.html" %}
+{% endblock %}
+{% block choice_class %}learn-description{% endblock %}
+{% block feedback %}
+    {% set sign = question.sign %}
+    <p>Gardiner lists this sign in <strong>{{ question.correct.text }}</strong>.
+        {% if sign.description %}{{ sign.description }}{% endif %}
+    </p>
+    <dl>
+        <dt>Gardiner identifier</dt><dd>{{ sign.gardiner }}</dd>
+        {% if sign.properties.get('kEH_FVal') %}
+            <dt>Documented reading</dt><dd>{{ sign.properties['kEH_FVal'] }}</dd>
+        {% endif %}
+        {% if sign.properties.get('kEH_Func') %}
+            <dt>Linguistic function</dt><dd>{{ sign.properties['kEH_Func'] }}</dd>
+        {% endif %}
+    </dl>
+    <p>The group describes the sign’s appearance. Its reading and function in an inscription depend on context.</p>
+    {% include "learn/catalogue_link.html" %}
+{% endblock %}
+
+{% block exercise_dialog %}
+    {% include "learn/catalogue_dialog.html" %}
+{% endblock %}

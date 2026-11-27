@@ -1,0 +1,29 @@
+{% extends "learn/question.html" %}
+{% block title %}Identify the object depicted by a sign{% endblock %}
+{% block introduction %}Choose the catalogue description that matches the sign shown.{% endblock %}
+{% block stimulus %}
+    {% include "learn/displayed_sign.html" %}
+{% endblock %}
+{% block choice_class %}learn-description{% endblock %}
+{% block feedback %}
+    {% set sign = question.sign %}
+    <p><strong>{{ question.correct.text }}</strong></p>
+    <dl>
+        {% if sign.gardiner %}
+            <dt>Gardiner identifier</dt><dd>{{ sign.gardiner }}</dd>
+        {% endif %}
+        <dt>Classification</dt><dd>{{ group_label(sign.group) }} · {{ sign.properties['kEH_Cat'] }}</dd>
+        {% if sign.properties.get('kEH_FVal') %}
+            <dt>Documented phonetic value</dt><dd>{{ sign.properties['kEH_FVal'] }}</dd>
+        {% endif %}
+        {% if sign.properties.get('kEH_Func') %}
+            <dt>Linguistic function</dt><dd>{{ sign.properties['kEH_Func'] }}</dd>
+        {% endif %}
+    </dl>
+    <p>The description identifies what the sign depicts. Its reading and meaning in an inscription depend on context.</p>
+    {% include "learn/catalogue_link.html" %}
+{% endblock %}
+
+{% block exercise_dialog %}
+    {% include "learn/catalogue_dialog.html" %}
+{% endblock %}

@@ -1,8 +1,14 @@
 """Browse and inspect the application's sign catalogue."""
 
-from flask import Blueprint, Response, abort, render_template, request, send_file
+from flask import Blueprint, Response, abort, render_template, request
 
-from hieroglyphics.catalogue.signs import DATA_DIRECTORY, Sign, get_catalogue, group_label, search_signs
+from hieroglyphics.catalogue.signs import (
+    Sign,
+    get_catalogue,
+    get_catalogue_licence,
+    group_label,
+    search_signs,
+)
 from hieroglyphics.transliteration import get_transliterations
 
 signs_bp = Blueprint("signs", __name__, template_folder="templates")
@@ -64,19 +70,28 @@ def detail(code_point: str) -> str:
     if sign is None or code_point.upper() != sign.code_point:
         abort(404)
 
-    correspondences = get_transliterations("alphabet_l_to_r")
-    letters = [
-        (letter, sequence.count(sign.glyph))
-        for letter, sequence in correspondences.items()
-        if sign.glyph in sequence
-    ]
     return render_template(
         "signs/detail.html",
         sign=sign,
         version=version,
         classification=group_label(sign.group),
-        letters=letters,
     )
+
+
+@signs_bp.app_template_global()
+def catalogue_letters(sign: Sign) -> list[tuple[str, int]]:
+    """
+    Find modern app correspondences that contain this sign.
+
+    :param sign: Sign displayed in the catalogue entry.
+    :return: App letters paired with the number of occurrences of the sign.
+    """
+    correspondences = get_transliterations("alphabet_l_to_r")
+    return [
+        (letter, sequence.count(sign.glyph))
+        for letter, sequence in correspondences.items()
+        if sign.glyph in sequence
+    ]
 
 
 @signs_bp.get("/licence")
@@ -86,4 +101,4 @@ def licence() -> Response:
 
     :return: Plain-text licence response.
     """
-    return send_file(DATA_DIRECTORY / "Unikemet-LICENSE.txt", mimetype="text/plain")
+    return Response(get_catalogue_licence(), mimetype="text/plain")
