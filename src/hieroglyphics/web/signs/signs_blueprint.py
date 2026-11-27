@@ -1,8 +1,14 @@
 """Browse and inspect the application's sign catalogue."""
 
-from flask import Blueprint, Response, abort, render_template, request, send_file
+from flask import Blueprint, Response, abort, render_template, request
 
-from hieroglyphics.catalogue.signs import DATA_DIRECTORY, Sign, get_catalogue, group_label, search_signs
+from hieroglyphics.catalogue.signs import (
+    Sign,
+    get_catalogue,
+    get_catalogue_licence,
+    group_label,
+    search_signs,
+)
 from hieroglyphics.transliteration import get_transliterations
 
 signs_bp = Blueprint("signs", __name__, template_folder="templates")
@@ -95,4 +101,4 @@ def licence() -> Response:
 
     :return: Plain-text licence response.
     """
-    return send_file(DATA_DIRECTORY / "Unikemet-LICENSE.txt", mimetype="text/plain")
+    return Response(get_catalogue_licence(), mimetype="text/plain")
