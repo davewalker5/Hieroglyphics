@@ -58,7 +58,11 @@ def test_catalogue_rejects_incomplete_selection(tmp_path: Path) -> None:
         ({"q": chr(0x13153)}, {0x13153}),
         ({"q": "rw"}, {0x130ED}),
         ({"q": "s"}, {0x13283, 0x132F4}),
-        ({"consonants": "2", "function": "Phonemogram"}, {0x130ED, 0x1336F}),
+        (
+            {"consonants": "2", "function": "Phonemogram"},
+            {0x130ED, 0x130F9, 0x1336F},
+        ),
+        ({"consonants": "3"}, {0x1310A, 0x13124, 0x13349}),
         ({"group": "E", "q": "rw"}, {0x130ED}),
         ({"group": "G", "q": "rw"}, set()),
     ],
@@ -80,8 +84,9 @@ def test_catalogue_detail_and_links(monkeypatch: pytest.MonkeyPatch) -> None:
     """Catalogue entries link from the alphabet and both result directions."""
     monkeypatch.delenv("HIEROGLYPHICS_DATA", raising=False)
     with create_app().test_client() as client:
-        assert len(get_catalogue()[1]) == 36
-        assert client.get("/signs/").get_data(as_text=True).count('class="sign-card"') == 36
+        assert len(get_catalogue()[1]) == 40
+        catalogue = client.get("/signs/").get_data(as_text=True)
+        assert catalogue.count('class="sign-card"') == 40
         detail = client.get("/signs/U+132F4").get_data(as_text=True)
         assert "S29" in detail and "folded piece of cloth" in detail
         assert "X (2 times)" in detail and "UniKemet 18.0.0" in detail

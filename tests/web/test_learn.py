@@ -3,11 +3,13 @@
 import re
 from html import unescape
 from pathlib import Path
+from random import Random
 
 import pytest
 from flask.testing import FlaskClient
 
 from hieroglyphics.catalogue.signs import get_catalogue
+from hieroglyphics.learning.phonetic import generate_question
 from hieroglyphics.web import create_app
 
 _EXERCISE_URL = "/learn/phonetic-value"
@@ -183,20 +185,19 @@ def test_invalid_quiz_length(
 
 
 @pytest.mark.parametrize(
-    ("seed", "value", "has_help"),
+    ("value", "has_help"),
     [
-        (0, "ḳ", True),
-        (1, "k", False),
-        (5, "ꜣ", True),
-        (7, "ꞽ", True),
-        (25, "wꜣ", True),
-        (32, "ḏ", True),
+        ("ḳ", True),
+        ("k", False),
+        ("ꜣ", True),
+        ("ꞽ", True),
+        ("wꜣ", True),
+        ("ḏ", True),
     ],
 )
 def test_transliteration_help(
     client: FlaskClient,
     monkeypatch: pytest.MonkeyPatch,
-    seed: int,
     value: str,
     has_help: bool,
 ) -> None:
@@ -205,10 +206,16 @@ def test_transliteration_help(
 
     :param client: Test client for the application.
     :param monkeypatch: Environment patching fixture.
-    :param seed: Seed that selects the test reading.
     :param value: Reading expected in the prompt.
     :param has_help: Whether the reading should have a help button.
     """
+    signs = get_catalogue()[1].values()
+    seed = next(
+        candidate
+        for candidate in range(1_000)
+        if (question := generate_question(signs, Random(f"{candidate:032x}")))
+        and question.value == value
+    )
     monkeypatch.setattr(
         "hieroglyphics.web.learn.learn_blueprint.token_hex",
         lambda byte_count: f"{seed:0{2 * byte_count}x}",

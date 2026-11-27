@@ -16,6 +16,7 @@ from hieroglyphics.learning.phonetic import (
     generate_question,
     generate_sign_value_question,
 )
+from hieroglyphics.learning.phonogram import generate_phonogram_question
 from hieroglyphics.learning.questions import Question
 from hieroglyphics.learning.quiz import QuizRun
 
@@ -89,6 +90,16 @@ def linguistic_function() -> str:
     return _run_quiz(
         "linguistic_function", "learn-linguistic-function", generate_function_question
     )
+
+
+@learn_bp.route("/phonogram", methods=["GET", "POST"])
+def phonogram() -> str:
+    """
+    Present and grade questions about consonant counts in phonogram readings.
+
+    :return: Rendered exercise page, including the score after the final answer.
+    """
+    return _run_quiz("phonogram", "learn-phonogram", generate_phonogram_question)
 
 
 def _run_quiz(

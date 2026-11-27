@@ -154,6 +154,37 @@
       "kEH_HG": "E23",
       "kEH_IFAO": "136,12"
     },
+    "130F9": {
+      "kEH_Cat": "E-16-006",
+      "kEH_Core": "C",
+      "kEH_Desc": "A desert hare, lying down, with whiskers.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "wn",
+      "kEH_UniK": "E034",
+      "kEH_JSesh": "E34"
+    },
+    "1310A": {
+      "kEH_Cat": "F-05-001",
+      "kEH_Core": "C",
+      "kEH_Desc": "The head and neck of a canine animal.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "wsr",
+      "kEH_UniK": "F012",
+      "kEH_JSesh": "F12",
+      "kEH_HG": "F12",
+      "kEH_IFAO": "149,5"
+    },
+    "13124": {
+      "kEH_Cat": "F-24-004",
+      "kEH_Core": "C",
+      "kEH_Desc": "A windpipe and heart, with a single horizontal stroke at the top.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "nfr",
+      "kEH_UniK": "F035",
+      "kEH_JSesh": "F35",
+      "kEH_HG": "F35",
+      "kEH_IFAO": "164,13"
+    },
     "1313F": {
       "kEH_Cat": "G-26-001",
       "kEH_Core": "C",
@@ -336,6 +367,17 @@
       "kEH_JSesh": "S29",
       "kEH_HG": "S29",
       "kEH_IFAO": "380,6"
+    },
+    "13349": {
+      "kEH_Cat": "U-08-012",
+      "kEH_Core": "C",
+      "kEH_Desc": "An adze, with an attached blade at the front (U19A), in a piece of wood.",
+      "kEH_Func": "Phonemogram",
+      "kEH_FVal": "stp",
+      "kEH_UniK": "U021",
+      "kEH_JSesh": "U21",
+      "kEH_HG": "U21",
+      "kEH_IFAO": "395,5"
     },
     "1336F": {
       "kEH_Cat": "V-01-029",
