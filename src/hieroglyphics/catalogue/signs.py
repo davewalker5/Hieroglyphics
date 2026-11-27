@@ -67,6 +67,20 @@ class Sign:
         return self.properties.get("kEH_Desc", "").strip()
 
     @property
+    def plain_phonetic_values(self) -> tuple[str, ...]:
+        """
+        Return documented readings when every alternative is unqualified.
+
+        :return: Distinct NFC readings in catalogue order, or an empty tuple
+            when any reading is missing, uncertain or otherwise qualified.
+        """
+        raw_values = normalize("NFC", self.properties.get("kEH_FVal", ""))
+        values = tuple(value.strip() for value in raw_values.split("|"))
+        if not all(_PLAIN_CONSONANTS.fullmatch(value) for value in values):
+            return ()
+        return tuple(dict.fromkeys(values))
+
+    @property
     def consonant_count(self) -> int | None:
         """Count consonants when a phonemogram has one plain, unqualified reading."""
         value = normalize("NFC", self.properties.get("kEH_FVal", ""))

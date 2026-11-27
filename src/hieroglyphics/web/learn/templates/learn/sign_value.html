@@ -1,0 +1,22 @@
+{% extends "learn/question.html" %}
+{% block title %}Identify the phonetic value of a displayed sign{% endblock %}
+{% block introduction %}
+    Choose a documented reading in Egyptological transliteration.
+    The exact ancient pronunciation is uncertain.
+{% endblock %}
+{% block stimulus %}
+    <p class="catalogue-glyph learn-stimulus" aria-label="Displayed hieroglyph">{{ question.sign.glyph }}</p>
+{% endblock %}
+{% block choice_class %}learn-reading{% endblock %}
+{% block feedback %}
+    {% set sign = question.sign %}
+    <p><strong>{{ question.correct.text }}</strong> is a documented reading of
+        <a href="{{ url_for('signs.detail', code_point=sign.code_point) }}">{{ sign.gardiner or sign.code_point }}</a>.
+        {% if sign.description %}{{ sign.description }}{% endif %}
+    </p>
+    {% if sign.plain_phonetic_values | length > 1 %}
+        <p>Other documented readings
+            <strong>{{ sign.plain_phonetic_values | reject("equalto", question.correct.text) | join(", ") }}</strong>
+        </p>
+    {% endif %}
+{% endblock %}

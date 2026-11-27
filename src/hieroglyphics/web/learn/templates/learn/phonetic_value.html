@@ -1,0 +1,17 @@
+{% extends "learn/question.html" %}
+{% block title %}Identify a sign from its phonetic value{% endblock %}
+{% block introduction %}
+    Egyptological transliteration represents documented readings.
+    The exact ancient pronunciation is uncertain.
+{% endblock %}
+{% block choice_class %}catalogue-glyph{% endblock %}
+{% block feedback %}
+    {% set sign = question.sign %}
+    <p>The correct sign is <span class="catalogue-glyph learn-answer">{{ sign.glyph }}</span>
+        <a href="{{ url_for('signs.detail', code_point=sign.code_point) }}">{{ sign.gardiner or sign.code_point }}</a>.
+        {% if sign.description %}{{ sign.description }}{% endif %}
+    </p>
+    <p>Documented {{ "value" if sign.plain_phonetic_values | length == 1 else "values" }}
+        <strong>{{ sign.plain_phonetic_values | join(", ") }}</strong>
+    </p>
+{% endblock %}

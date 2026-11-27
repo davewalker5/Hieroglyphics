@@ -431,3 +431,73 @@ h1 {
 @media (max-width: 560px) {
     .sign-detail { grid-template-columns: 1fr; }
 }
+
+.learn-card { grid-template-rows: auto 1fr; }
+.learn-question, .learn-results { padding: clamp(16px, 3vw, 30px); }
+.learn-question h2, .learn-results h2 { margin-bottom: 16px; }
+.learn-choice {
+    min-height: 82px;
+    color: var(--text);
+    background: var(--input);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+}
+.learn-choice:hover, .learn-choice:focus-visible {
+    border-color: var(--cyan);
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+}
+.learn-answer { font-size: 1.8em; vertical-align: middle; }
+.learn-results { margin-top: 16px; }
+.learn-score {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 12px;
+    margin-bottom: 16px;
+}
+.learn-score progress {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 12px;
+    appearance: none;
+    overflow: hidden;
+    background: var(--input);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+}
+.learn-score progress::-webkit-progress-bar { background: var(--input); }
+.learn-score progress::-webkit-progress-value { background: var(--cyan); }
+.learn-score progress::-moz-progress-bar { background: var(--cyan); }
+
+.learn-prompt {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.learn-question .learn-prompt h2 { margin-bottom: 0; }
+.learn-info {
+    color: var(--cyan);
+    background: transparent;
+    border: 0;
+    border-radius: 6px;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1.2rem;
+}
+.learn-info:hover, .learn-info:focus-visible { background: var(--surface-2); }
+.learn-help .modal-content {
+    color: var(--text);
+    background: var(--surface);
+    border-color: var(--line);
+}
+.learn-help :is(.modal-header, .modal-footer) { border-color: var(--line); }
+.learn-help-table { width: 100%; }
+.learn-help-table :is(th, td) {
+    padding: 8px;
+    vertical-align: top;
+    border-bottom: 1px solid var(--line);
+}
+
+.learn-stimulus { font-size: clamp(3rem, 9vw, 5rem); }
+.learn-reading { font-size: 1.5rem; }

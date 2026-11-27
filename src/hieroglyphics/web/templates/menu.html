@@ -29,6 +29,11 @@
              {% if request.blueprint == 'signs' %}aria-current="page"{% endif %}
              href="{{ url_for('signs.index') }}">Sign catalogue</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.blueprint == 'learn' %} active{% endif %}"
+             {% if request.blueprint == 'learn' %}aria-current="page"{% endif %}
+             href="{{ url_for('learn.index') }}">Learn</a>
+        </li>
       </ul>
     </div>
     </div>

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}Learn · Hieroglyphics{% endblock %}
+
+{% block content %}
+    <section class="page-heading">
+        <div>
+            <h1>Learn</h1>
+            <p class="lede">Practise reading and recognising Egyptian hieroglyphs.</p>
+        </div>
+    </section>
+    <ul class="sign-grid">
+        <li><a class="sign-card learn-card" href="{{ url_for('learn.phonetic_value') }}">
+            <strong>Identify a sign from its phonetic value</strong>
+            <span>Choose the sign that matches the given Egyptological transliteration.</span>
+        </a></li>
+        <li><a class="sign-card learn-card" href="{{ url_for('learn.sign_value') }}">
+            <strong>Identify the phonetic value of a displayed sign</strong>
+            <span>Choose a documented reading for the hieroglyph shown.</span>
+        </a></li>
+    </ul>
+{% endblock %}
