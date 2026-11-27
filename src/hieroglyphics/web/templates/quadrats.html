@@ -1,4 +1,6 @@
-{% macro render_quadrats(words, right_to_left, quadrat_size) %}
+{% from "signs/dialog_attributes.html" import sign_dialog_attributes %}
+
+{% macro render_quadrats(words, right_to_left, quadrat_size, dialogs=false) %}
     <div class="quadrat-output" dir="{{ 'rtl' if right_to_left else 'ltr' }}"
          role="group" aria-label="Hieroglyphic transliteration in quadrats">
         {% for word in words %}
@@ -16,6 +18,7 @@
                                     {% if details %}
                                         <a class="sign-glyph-link"
                                            href="{{ url_for('signs.detail', code_point=details.code_point) }}"
+                                           {% if dialogs %}{{ sign_dialog_attributes(details) }}{% endif %}
                                            aria-label="Explore {{ details.gardiner or details.code_point }}">
                                     {% endif %}
                                     <text x="{{ sign.x }}" y="{{ sign.y }}">{{ sign.glyph }}</text>
