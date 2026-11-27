@@ -161,7 +161,7 @@ h1 {
     text-transform: uppercase;
 }
 
-.workspace-panel, .alphabet-panel {
+.workspace-panel {
     overflow: hidden;
     background: var(--surface);
     border: 1px solid var(--line);
@@ -291,42 +291,6 @@ h1 {
 
 .hieroglyph-cell-r-to-l { transform: scaleX(-1); }
 
-.alphabet-grid {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 1px;
-    padding: 1px;
-    background: var(--line);
-}
-
-.alphabet-card {
-    display: flex;
-    min-height: 135px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 11px;
-    background: var(--surface);
-    transition: background .15s, transform .15s;
-}
-
-.alphabet-card:hover { z-index: 1; background: var(--surface-2); }
-
-.alphabet-letter {
-    color: var(--muted);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-}
-
-.alphabet-glyph {
-    color: var(--text);
-    font-family: "Segoe UI Historic", "Noto Sans Egyptian Hieroglyphs", sans-serif;
-    font-size: 43px;
-    line-height: 1;
-}
-
 .error {
     display: grid;
     gap: 4px;
@@ -351,7 +315,6 @@ h1 {
     .page-heading { align-items: flex-start; }
     .context-badge { display: none; }
     .form-grid { grid-template-columns: 1fr; }
-    .alphabet-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 440px) {
@@ -364,7 +327,6 @@ h1 {
     .result-panel { margin: 0 20px 20px; }
     .result-heading { display: block; }
     .direction-label { display: inline-block; margin-top: 12px; }
-    .alphabet-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -417,19 +379,38 @@ h1 {
     text-decoration: none;
 }
 .sign-card > :last-child, .sign-source { color: var(--muted); }
-.sign-card:hover, .sign-card:focus-visible { border-color: var(--cyan); color: var(--text); }
-.sign-detail {
+.sign-card:hover, .sign-card:focus-visible, .alphabet-card:focus-within {
+    border-color: var(--cyan);
+    color: var(--text);
+}
+.alphabet-card { position: relative; }
+.alphabet-card .sign-glyph-link:not(.stretched-link) {
+    position: relative;
+    z-index: 2;
+}
+.alphabet-sign-details {
     display: grid;
-    grid-template-columns: minmax(130px, 1fr) 3fr;
+    gap: 6px;
+}
+.alphabet-sign-details strong { color: var(--text); }
+.sign-detail {
+    display: flex;
+    flex-wrap: wrap;
+    container-type: inline-size;
     padding: clamp(16px, 3vw, 30px);
     gap: 20px;
 }
-.sign-detail-glyph { font-size: clamp(72px, 12vw, 132px); text-align: center; }
+.sign-detail-glyph {
+    flex: 1 0 auto;
+    font-size: clamp(48px, 25cqi, 132px);
+    text-align: center;
+}
+.sign-detail dl { flex: 3 1 240px; min-width: 0; }
 .sign-detail dd { margin-bottom: 12px; overflow-wrap: anywhere; }
 .sign-source { margin-top: 22px; }
 
-@media (max-width: 560px) {
-    .sign-detail { grid-template-columns: 1fr; }
+@media (min-width: 576px) {
+    .sign-dialog { max-width: min(960px, calc(100% - 2rem)); }
 }
 
 .learn-grid {

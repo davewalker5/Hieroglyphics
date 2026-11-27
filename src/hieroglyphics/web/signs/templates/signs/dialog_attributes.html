@@ -1,0 +1,7 @@
+{% macro sign_dialog_id(sign) -%}
+    catalogue-entry-{{ sign.code_point[2:] }}
+{%- endmacro %}
+
+{% macro sign_dialog_attributes(sign) -%}
+    data-bs-toggle="modal" data-bs-target="#{{ sign_dialog_id(sign) }}" aria-haspopup="dialog"
+{%- endmacro %}

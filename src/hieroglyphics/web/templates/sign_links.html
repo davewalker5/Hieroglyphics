@@ -1,8 +1,12 @@
-{% macro link_signs(sequence) -%}
+{% from "signs/dialog_attributes.html" import sign_dialog_attributes %}
+
+{% macro link_signs(sequence, dialogs=false, stretch=false) -%}
     {% for glyph in sequence -%}
         {% set sign = catalogue_sign(glyph) -%}
         {% if sign -%}
-            <a class="sign-glyph-link" href="{{ url_for('signs.detail', code_point=sign.code_point) }}"
+            <a class="sign-glyph-link{% if stretch and loop.first %} stretched-link{% endif %}"
+               href="{{ url_for('signs.detail', code_point=sign.code_point) }}"
+               {% if dialogs %}{{ sign_dialog_attributes(sign) }}{% endif %}
                aria-label="Explore {{ sign.gardiner or sign.code_point }}">{{ glyph }}</a>
         {%- else -%}
             {{ glyph }}
