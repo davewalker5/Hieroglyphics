@@ -5,31 +5,36 @@
 {% block content %}
     <section class="page-heading">
         <div>
-            <p class="eyebrow">Reference library</p>
             <h1>Hieroglyphic alphabet</h1>
-            <p class="lede">Explore the signs the app uses for each letter of the English alphabet.</p>
-        </div>
-        <div class="context-badge" aria-hidden="true">
-            <span>26</span>
-            <small>Letter forms</small>
+            <p class="lede">Explore the signs the app uses for each English letter. Select a glyph to open its catalogue entry.</p>
         </div>
     </section>
 
     {% include "error.html" with context %}
-    <section class="alphabet-panel">
-        <div class="panel-heading">
-            <div>
-                <h2>App letter correspondences</h2>
-                <p>Select a glyph to open its catalogue entry.</p>
-            </div>
-        </div>
-        <div class="alphabet-grid">
-            {% for i in range(letters | length) %}
-                <article class="alphabet-card">
-                    <span class="alphabet-letter">{{ letters[i] }}</span>
-                    <span class="alphabet-glyph">{{ link_signs(transliteration[i]) }}</span>
-                </article>
-            {% endfor %}
-        </div>
-    </section>
+    <ul class="sign-grid">
+        {% for letter in letters %}
+            {% set glyphs = transliteration[loop.index0] %}
+            {% set unique_glyphs = glyphs | unique | list %}
+            <li class="sign-card alphabet-card">
+                <span class="catalogue-glyph">{{ link_signs(glyphs, dialogs=true, stretch=unique_glyphs | length == 1) }}</span>
+                <strong>{{ letter }}</strong>
+                <div class="alphabet-sign-details">
+                    {% for glyph in unique_glyphs %}
+                        {% set sign = catalogue_sign(glyph) %}
+                        {% if sign %}
+                            <div>
+                                <strong>{{ sign.gardiner or sign.code_point }}</strong>
+                                <div>{{ sign.description or "Description unavailable" }}</div>
+                            </div>
+                        {% else %}
+                            <div>Sign details unavailable</div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% include "sign_sources.html" %}
+    {% include "signs/dialogs.html" %}
 {% endblock %}
