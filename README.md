@@ -8,7 +8,7 @@
 
 # Hieroglyphics – Exploring Ancient Egyptian Writing
 
-_Hieroglyphics_ is an application for exploring ancient Egyptian hieroglyphic writing through transliteration, sign exploration and interactive learning and is intended for anyone with an interest in Egyptian hieroglyphs, from those encountering them for the first time to those wishing to learn a little about individual signs and their characteristics.
+_Hieroglyphics_ is an application for exploring ancient Egyptian hieroglyphic writing through transliteration, sign exploration and interactive learning and is intended for anyone with an interest in Egyptian hieroglyphs wishing to learn a little about individual signs and their characteristics.
 
 It is not intended to provide a comprehensive course in ancient Egyptian or to replace established Egyptological reference works.
 
