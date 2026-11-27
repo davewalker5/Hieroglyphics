@@ -448,6 +448,42 @@ h1 {
     outline-offset: 2px;
 }
 .learn-answer { font-size: 1.8em; vertical-align: middle; }
+.learn-feedback {
+    margin: 16px 0;
+    border: 1px solid var(--line);
+    border-inline-start: 4px solid var(--feedback-accent);
+    border-radius: 9px;
+    background: var(--input);
+}
+.learn-feedback-correct { --feedback-accent: var(--green); }
+.learn-feedback-incorrect { --feedback-accent: var(--red); }
+.learn-feedback-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 20px;
+    padding: 12px 16px;
+    border-radius: 8px 8px 0 0;
+    background: var(--surface-2);
+}
+.learn-feedback-header h3 {
+    margin: 0;
+    color: var(--feedback-accent);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.learn-feedback-header i { margin-inline-end: 6px; }
+.learn-feedback-header p { margin: 0; }
+.learn-feedback-body { padding: 14px 16px; }
+.learn-feedback-body > :last-child { margin-bottom: 0; }
+.learn-feedback-body dl {
+    display: grid;
+    grid-template-columns: fit-content(45%) minmax(0, 1fr);
+    gap: 8px 16px;
+    padding: 12px 0;
+    border-block: 1px solid var(--line);
+}
+.learn-feedback-body dd { margin: 0; }
 .learn-results { margin-top: 16px; }
 .learn-score {
     display: grid;
@@ -501,3 +537,6 @@ h1 {
 
 .learn-stimulus { font-size: clamp(3rem, 9vw, 5rem); }
 .learn-reading { font-size: 1.5rem; }
+
+.learn-choice .learn-description { display: block; padding: 10px; }
+.learn-description.learn-answer { font-size: inherit; vertical-align: baseline; }

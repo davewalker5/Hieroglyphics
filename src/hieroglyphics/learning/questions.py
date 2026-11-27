@@ -2,6 +2,8 @@
 
 from dataclasses import dataclass
 
+from hieroglyphics.catalogue.signs import Sign
+
 
 @dataclass(frozen=True)
 class Choice:
@@ -39,3 +41,19 @@ class Question:
             (choice for choice in self.choices if choice.identifier == identifier),
             None,
         )
+
+
+@dataclass(frozen=True)
+class DisplayedSignQuestion(Question):
+    """A question that asks the learner to identify a property of a sign."""
+
+    sign: Sign
+
+    @property
+    def repeat_key(self) -> str:
+        """
+        Identify the displayed sign for avoiding immediate repeats.
+
+        :return: Catalogue code point of the displayed sign.
+        """
+        return self.sign.code_point

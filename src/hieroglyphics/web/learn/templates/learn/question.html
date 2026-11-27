@@ -23,9 +23,20 @@
             </div>
             {% block stimulus %}{% endblock %}
             {% if selected %}
-                <p><strong>{{ "Correct!" if selected == question.correct else "Incorrect." }}</strong>
-                    You chose <span class="{{ self.choice_class() }} learn-answer">{{ selected.text }}</span></p>
-                {% block feedback %}{% endblock %}
+                {% set is_correct = selected == question.correct %}
+                <section class="learn-feedback {{ 'learn-feedback-correct' if is_correct else 'learn-feedback-incorrect' }}"
+                         aria-labelledby="learn-verdict">
+                    <header class="learn-feedback-header">
+                        <h3 id="learn-verdict">
+                            <i class="fas {{ 'fa-check-circle' if is_correct else 'fa-times-circle' }}" aria-hidden="true"></i>
+                            {{ "Correct!" if is_correct else "Incorrect." }}
+                        </h3>
+                        <p>You chose <span class="{{ self.choice_class() }} learn-answer">{{ selected.text }}</span></p>
+                    </header>
+                    <div class="learn-feedback-body">
+                        {% block feedback %}{% endblock %}
+                    </div>
+                </section>
                 {% if not quiz.complete %}
                     <form method="get" action="{{ exercise_url }}">
                         <input type="hidden" name="quiz" value="{{ quiz_token }}">
@@ -69,6 +80,8 @@
             </form>
         </section>
     {% endif %}
+
+    {% block exercise_dialog %}{% endblock %}
 
     {% if question and question.has_transliteration_help %}
         {% include "learn/transliteration_help.html" %}

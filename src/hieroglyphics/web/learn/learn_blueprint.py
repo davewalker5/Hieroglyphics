@@ -8,7 +8,8 @@ from secrets import token_hex
 from flask import Blueprint, abort, current_app, render_template, request
 from itsdangerous import BadData, URLSafeSerializer
 
-from hieroglyphics.catalogue.signs import Sign, get_catalogue
+from hieroglyphics.catalogue.signs import Sign, get_catalogue, group_label
+from hieroglyphics.learning.depiction import generate_depiction_question
 from hieroglyphics.learning.phonetic import (
     generate_question,
     generate_sign_value_question,
@@ -50,6 +51,18 @@ def sign_value() -> str:
     return _run_quiz("sign_value", "learn-sign-value", generate_sign_value_question)
 
 
+@learn_bp.route("/depicted-object", methods=["GET", "POST"])
+def depicted_object() -> str:
+    """
+    Present and grade questions about the objects depicted by signs.
+
+    :return: Rendered exercise page, including the score after the final answer.
+    """
+    return _run_quiz(
+        "depicted_object", "learn-depicted-object", generate_depiction_question
+    )
+
+
 def _run_quiz(
     template: str,
     token_salt: str,
@@ -77,7 +90,7 @@ def _run_quiz(
                 400, description="This quiz attempt is invalid. Start again from Learn."
             )
 
-    signs = get_catalogue()[1]
+    version, signs = get_catalogue()
     question = question_generator(
         signs.values(), Random(run.seed), run.previous_prompt
     )
@@ -101,4 +114,6 @@ def _run_quiz(
         quiz_token=serializer.dumps(asdict(run)) if not run.complete else None,
         exercise_url=request.path,
         selected=selected,
+        group_label=group_label,
+        version=version,
     )

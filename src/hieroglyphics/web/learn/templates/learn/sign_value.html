@@ -5,7 +5,7 @@
     The exact ancient pronunciation is uncertain.
 {% endblock %}
 {% block stimulus %}
-    <p class="catalogue-glyph learn-stimulus" aria-label="Displayed hieroglyph">{{ question.sign.glyph }}</p>
+    {% include "learn/displayed_sign.html" %}
 {% endblock %}
 {% block choice_class %}learn-reading{% endblock %}
 {% block feedback %}

@@ -1,0 +1,51 @@
+{% extends "learn/question.html" %}
+{% block title %}Identify the object depicted by a sign{% endblock %}
+{% block introduction %}Choose the catalogue description that matches the sign shown.{% endblock %}
+{% block stimulus %}
+    {% include "learn/displayed_sign.html" %}
+{% endblock %}
+{% block choice_class %}learn-description{% endblock %}
+{% block feedback %}
+    {% set sign = question.sign %}
+    <p><strong>{{ question.correct.text }}</strong></p>
+    <dl>
+        {% if sign.gardiner %}
+            <dt>Gardiner identifier</dt><dd>{{ sign.gardiner }}</dd>
+        {% endif %}
+        <dt>Classification</dt><dd>{{ group_label(sign.group) }} · {{ sign.properties['kEH_Cat'] }}</dd>
+        {% if sign.properties.get('kEH_FVal') %}
+            <dt>Documented phonetic value</dt><dd>{{ sign.properties['kEH_FVal'] }}</dd>
+        {% endif %}
+        {% if sign.properties.get('kEH_Func') %}
+            <dt>Linguistic function</dt><dd>{{ sign.properties['kEH_Func'] }}</dd>
+        {% endif %}
+    </dl>
+    <p>The description identifies what the sign depicts. Its reading and meaning in an inscription depend on context.</p>
+    <p><a href="{{ url_for('signs.detail', code_point=sign.code_point) }}"
+          data-bs-toggle="modal" data-bs-target="#learn-catalogue-entry" aria-haspopup="dialog">View catalogue entry for {{ sign.gardiner or sign.code_point }}</a></p>
+{% endblock %}
+
+{% block exercise_dialog %}
+    {% if selected %}
+        {% set sign = question.sign %}
+        <div class="modal fade learn-help" id="learn-catalogue-entry" tabindex="-1"
+             aria-labelledby="learn-catalogue-title" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h4" id="learn-catalogue-title">Catalogue entry for {{ sign.gardiner or sign.code_point }}</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{ sign.description }}</p>
+                        {% with classification=group_label(sign.group), catalogue_dialog=true %}
+                            {% include "signs/entry.html" %}
+                        {% endwith %}
+                    </div>
+                    <div class="modal-footer">
+                        <button class="primary-button" type="button" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

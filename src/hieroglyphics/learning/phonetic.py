@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from random import Random
 
 from hieroglyphics.catalogue.signs import Sign
-from hieroglyphics.learning.questions import Choice, Question
+from hieroglyphics.learning.questions import Choice, DisplayedSignQuestion, Question
 
 _CHOICE_COUNT = 4
 _GUIDE_CHARACTERS = frozenset("ꜣꞽḳḏ")
@@ -87,19 +87,8 @@ _VALUE_PROMPT = "Which of these is an attested phonetic value of the displayed s
 
 
 @dataclass(frozen=True)
-class SignValueQuestion(Question):
+class SignValueQuestion(DisplayedSignQuestion):
     """A question asking for one documented reading of the displayed sign."""
-
-    sign: Sign
-
-    @property
-    def repeat_key(self) -> str:
-        """
-        Identify the displayed sign for avoiding immediate repeats.
-
-        :return: Catalogue code point of the displayed sign.
-        """
-        return self.sign.code_point
 
     @property
     def has_transliteration_help(self) -> bool:
