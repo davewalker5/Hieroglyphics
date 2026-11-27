@@ -55,3 +55,15 @@ def test_invalid_layout() -> None:
         response = client.post(PREVIEW_URL, data={"word": "a", "direction": 0, "layout": "invalid"})
 
     assert "Choose a valid layout mode." in response.get_data(as_text=True)
+
+
+def test_boundary_control_is_checked_and_kept_outside_the_live_result() -> None:
+    """Keep boundary visibility on the page while replacing preview markup."""
+    form = {"word": "ept", "direction": 0, "layout": "quadrat"}
+    with create_app().test_client() as client:
+        page = client.post("/transliterate/", data=form).get_data(as_text=True)
+        preview = client.post(PREVIEW_URL, data=form).get_data(as_text=True)
+
+    assert 'id="show-quadrat-boundaries" checked' in page
+    assert 'id="show-quadrat-boundaries"' not in preview
+    assert 'class="quadrat-frame"' in preview

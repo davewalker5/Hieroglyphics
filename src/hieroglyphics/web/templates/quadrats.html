@@ -6,11 +6,11 @@
                 {% for drawing in word %}
                     <div class="quadrat-frame">
                         <svg class="quadrat" xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 {{ drawing.viewport_width }} {{ quadrat_size }}">
+                             viewBox="0 0 {{ drawing.spaced_width }} {{ quadrat_size }}">
                             {% if right_to_left %}
-                                <g transform="translate({{ drawing.viewport_width }} 0) scale(-1 1)">
+                                <g transform="translate({{ drawing.spaced_width }} 0) scale(-1 1)">
                             {% endif %}
-                            <g transform="translate(0 {{ drawing.top_padding }}) scale({{ drawing.scale }})">
+                            <g transform="translate({{ drawing.left_padding }} {{ drawing.top_padding }}) scale({{ drawing.scale }})">
                                 {% for sign in drawing.signs %}
                                     {% set details = catalogue_sign(sign.glyph) %}
                                     {% if details %}

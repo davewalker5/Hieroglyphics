@@ -2,7 +2,15 @@
     const form = document.getElementById("transliteration-form");
     const word = form.elements.namedItem("word");
     const result = document.getElementById("transliteration-result");
+    const layout = form.elements.namedItem("layout");
+    const boundaries = document.getElementById("show-quadrat-boundaries");
     let activeRequest;
+
+    /** Show the setting only in Quadrat mode and retain it when switching layouts. */
+    function updateBoundaryDisplay() {
+        boundaries.parentElement.hidden = layout.value !== "quadrat";
+        result.classList.toggle("quadrat-boundaries-hidden", !boundaries.checked);
+    }
 
     /** Refresh the result for the current text, direction and layout. */
     async function updateResult() {
@@ -36,6 +44,9 @@
         }
     }
 
+    updateBoundaryDisplay();
+    boundaries.addEventListener("change", updateBoundaryDisplay);
+    layout.addEventListener("change", updateBoundaryDisplay);
     word.addEventListener("input", updateResult);
     form.addEventListener("change", (event) => {
         if (event.target.matches("select")) {

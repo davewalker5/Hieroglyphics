@@ -42,6 +42,10 @@
                     <option value="quadrat" {% if layout == "quadrat" %}selected{% endif %}>Quadrat</option>
                 </select>
             </label>
+            <label class="quadrat-boundary-option" for="show-quadrat-boundaries" hidden>
+                <input type="checkbox" id="show-quadrat-boundaries" checked>
+                Show quadrat boundaries
+            </label>
         </div>
         <div id="transliteration-result" aria-live="polite">
             {% include "transliterate/result.html" %}

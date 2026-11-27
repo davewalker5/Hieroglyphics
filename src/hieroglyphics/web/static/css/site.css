@@ -295,6 +295,21 @@ h1 {
 
 .hieroglyph-cell-r-to-l { transform: scaleX(-1); }
 
+.quadrat-boundary-option {
+    grid-column: 1 / -1;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.quadrat-boundary-option input {
+    margin-inline-end: 6px;
+    accent-color: var(--cyan);
+}
+
+.quadrat-boundaries-hidden .quadrat-frame {
+    border-color: transparent;
+}
+
 .quadrat-note {
     margin: 16px 22px 0;
     color: var(--muted);
@@ -313,7 +328,7 @@ h1 {
 }
 
 .quadrat-word {
-    gap: 8px;
+    row-gap: 8px;
     max-width: 100%;
 }
 

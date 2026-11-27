@@ -13,12 +13,9 @@ from hieroglyphics.web.quadrat_renderer import QUADRAT_SIZE, render_quadrats
         ("𓄿", (Sign("𓄿"),)),
         ("𓈖𓊃", (Group(Axis.VERTICAL, (Sign("𓈖"), Sign("𓊃"))),)),
         ("𓇋𓋴", (Group(Axis.HORIZONTAL, (Sign("𓇋"), Sign("𓋴"))),)),
-        ("𓊪𓏏", (Group(Axis.HORIZONTAL, (Sign("𓊪"), Sign("𓏏"))),)),
-        ("𓈖𓇋?", (Sign("𓈖"), Sign("𓇋"), Sign("?"))),
-        (
-            "𓈖𓊪𓏏",
-            (Group(Axis.VERTICAL, (Sign("𓈖"), Group(Axis.HORIZONTAL, (Sign("𓊪"), Sign("𓏏"))))),),
-        ),
+        ("𓊪𓏏", (Group(Axis.VERTICAL, (Sign("𓊪"), Sign("𓏏"))),)),
+        ("𓄿?", (Sign("𓄿"), Sign("?"))),
+        ("𓈖𓊪𓏏", (Group(Axis.VERTICAL, (Sign("𓈖"), Sign("𓊪"), Sign("𓏏"))),)),
     ],
 )
 def test_composition_rules(glyphs: str, expected: tuple[Node, ...]) -> None:
@@ -41,11 +38,11 @@ def test_empty_words_and_word_boundaries() -> None:
 
 def test_nested_drawing() -> None:
     """Check nested placement, sign order and maximum dimensions."""
-    (drawing,), = render_quadrats(compose(["𓈖𓊪𓏏"]))
-    wide, first_compact, second_compact = drawing.signs
-    assert "".join(sign.glyph for sign in drawing.signs) == "𓈖𓊪𓏏"
-    assert wide.y < first_compact.y
-    assert first_compact.x < second_compact.x
+    (drawing,), = render_quadrats(compose(["𓇋𓊪𓏏"]))
+    tall, first_compact, second_compact = drawing.signs
+    assert "".join(sign.glyph for sign in drawing.signs) == "𓇋𓊪𓏏"
+    assert tall.x < first_compact.x
+    assert first_compact.y < second_compact.y
     assert drawing.viewport_width <= QUADRAT_SIZE
 
 

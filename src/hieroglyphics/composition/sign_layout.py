@@ -66,3 +66,13 @@ def sign_layout(glyph: str) -> SignLayout:
     :return: Sign layout, with a conservative standalone box for unknown signs.
     """
     return _LAYOUTS.get(glyph, _DEFAULT_LAYOUT)
+
+
+def has_layout(glyph: str) -> bool:
+    """
+    Check whether the bundled font's sign metrics are known.
+
+    :param glyph: Unicode sign.
+    :return: Whether the sign has measured layout metadata.
+    """
+    return glyph in _LAYOUTS
