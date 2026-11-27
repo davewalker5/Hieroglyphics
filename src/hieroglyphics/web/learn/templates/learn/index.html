@@ -8,7 +8,7 @@
             <p class="lede">Practise reading and recognising Egyptian hieroglyphs.</p>
         </div>
     </section>
-    <ul class="sign-grid">
+    <ul class="sign-grid learn-grid">
         <li><a class="sign-card learn-card" href="{{ url_for('learn.phonetic_value') }}">
             <strong>Identify a sign from its phonetic value</strong>
             <span>Choose the sign that matches the given Egyptological transliteration.</span>
@@ -20,6 +20,10 @@
         <li><a class="sign-card learn-card" href="{{ url_for('learn.depicted_object') }}">
             <strong>Identify the object depicted by a sign</strong>
             <span>Match the hieroglyph to its catalogue description.</span>
+        </a></li>
+        <li><a class="sign-card learn-card" href="{{ url_for('learn.gardiner_classification') }}">
+            <strong>Identify the Gardiner classification of a sign</strong>
+            <span>Choose the sign's group in Gardiner's sign list.</span>
         </a></li>
         <li><a class="sign-card learn-card" href="{{ url_for('learn.linguistic_function') }}">
             <strong>Distinguish between linguistic functions</strong>

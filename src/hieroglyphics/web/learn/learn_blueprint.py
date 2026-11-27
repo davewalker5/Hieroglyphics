@@ -9,6 +9,7 @@ from flask import Blueprint, abort, current_app, render_template, request
 from itsdangerous import BadData, URLSafeSerializer
 
 from hieroglyphics.catalogue.signs import Sign, get_catalogue, group_label
+from hieroglyphics.learning.classification import generate_classification_question
 from hieroglyphics.learning.depiction import generate_depiction_question
 from hieroglyphics.learning.linguistic_function import generate_function_question
 from hieroglyphics.learning.phonetic import (
@@ -61,6 +62,20 @@ def depicted_object() -> str:
     """
     return _run_quiz(
         "depicted_object", "learn-depicted-object", generate_depiction_question
+    )
+
+
+@learn_bp.route("/gardiner-classification", methods=["GET", "POST"])
+def gardiner_classification() -> str:
+    """
+    Present and grade questions about Gardiner groups.
+
+    :return: Rendered exercise page, including the score after the final answer.
+    """
+    return _run_quiz(
+        "gardiner_classification",
+        "learn-gardiner-classification",
+        generate_classification_question,
     )
 
 

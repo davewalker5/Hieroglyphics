@@ -26,13 +26,17 @@ _SNAPSHOT_HEADER = re.compile(r"# Unikemet-(\d+\.\d+\.\d+)\.txt")
 _LICENCE_NAME = "Unikemet-LICENSE.txt"
 _LOGGER = logging.getLogger(__name__)
 _GARDINER_GROUPS = {
+    "A": "Men and their occupations",
+    "B": "Women and their occupations",
     "D": "Parts of the human body",
     "E": "Mammals",
     "G": "Birds",
     "I": "Amphibians and reptiles",
+    "L": "Invertebrates and lesser animals",
     "M": "Trees and plants",
     "N": "Sky, earth and water",
     "O": "Buildings and parts of buildings",
+    "P": "Ships and parts of ships",
     "Q": "Domestic and funerary furniture",
     "S": "Crowns, dress and equipment",
     "V": "Rope, fibre and baskets",
@@ -139,6 +143,16 @@ def get_catalogue_licence() -> str:
     return _catalogue_data()["licence"]
 
 
+def gardiner_group_name(group: str) -> str | None:
+    """
+    Look up the descriptive name of a Gardiner group.
+
+    :param group: Classification group code.
+    :return: Group name, if documented in the catalogue.
+    """
+    return _GARDINER_GROUPS.get(group)
+
+
 def group_label(group: str) -> str:
     """
     Return a readable name for the classification group.
@@ -146,7 +160,8 @@ def group_label(group: str) -> str:
     :param group: Group prefix from the UniKemet catalogue classification.
     :return: The group code and its label where known.
     """
-    return f"{group} · {_GARDINER_GROUPS[group]}" if group in _GARDINER_GROUPS else group
+    name = gardiner_group_name(group)
+    return f"{group} · {name}" if name else group
 
 
 def search_signs(query: str, group: str, function: str, consonants: str) -> list[Sign]:

@@ -432,6 +432,11 @@ h1 {
     .sign-detail { grid-template-columns: 1fr; }
 }
 
+.learn-grid {
+    --tile-gap: 12px;
+    gap: var(--tile-gap);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, max(180px, calc((100% - 2 * var(--tile-gap)) / 3))), 1fr));
+}
 .learn-card { grid-template-rows: auto 1fr; }
 .learn-question, .learn-results { padding: clamp(16px, 3vw, 30px); }
 .learn-question h2, .learn-results h2 { margin-bottom: 16px; }
